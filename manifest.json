@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "hub": {
+    "version": "0.1.0",
+    "notes": "First test build.",
+    "download": {
+      "mac": "https://github.com/askp-dev/hub/releases/latest/download/askp-Hub-macOS.dmg",
+      "win": "https://github.com/askp-dev/hub/releases/latest/download/askp-Hub-Windows-Setup.exe"
+    }
+  },
+  "plugins": [
+    {
+      "id": "va",
+      "name": "V/A",
+      "badge": "V/A",
+      "tagline": "Analog-style channel strip: eight slots of Pre, Tape, Comp, Tone, Space, Echo and more.",
+      "version": "0.1.0",
+      "bundles": { "vst3": "VA.vst3", "au": "VA.component", "clap": "VA.clap" },
+      "downloads": {}
+    },
+    {
+      "id": "sector",
+      "name": "Sector",
+      "badge": "SEC",
+      "tagline": "Split a mix by stereo position and frequency, and send each part to its own output.",
+      "version": "0.1.0",
+      "bundles": { "vst3": "Sector.vst3", "au": "Sector.component" },
+      "downloads": {}
+    },
+    {
+      "id": "sibil",
+      "name": "Sibil",
+      "badge": "SIB",
+      "tagline": "A de-esser that hears the difference between S, SH and T, and links across a vocal stack.",
+      "version": "0.1.0",
+      "bundles": { "vst3": "Sibil.vst3", "au": "Sibil.component" },
+      "downloads": {}
+    },
+    {
+      "id": "taste",
+      "name": "Taste",
+      "badge": "TST",
+      "tagline": "Build a taste profile from your own mixes and pull new mixes towards it.",
+      "version": "0.1.0",
+      "bundles": { "vst3": "Taste.vst3", "au": "Taste.component" },
+      "downloads": {}
+    }
+  ]
+}
