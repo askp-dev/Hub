@@ -129,6 +129,15 @@
             "au",
             "clap"
           ]
+        },
+        "win": {
+          "url": "https://github.com/askp-dev/hub/releases/download/taste-v0.1.0/taste-0.1.0-win.zip",
+          "sha256": "3616061e6bc9c6e8c25fdb81ad14933888cac2921ca1df752ccb30589b384ec2",
+          "size": 5056718,
+          "formats": [
+            "vst3",
+            "clap"
+          ]
         }
       },
       "released": "2026-11-19"
