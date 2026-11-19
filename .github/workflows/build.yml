@@ -1,0 +1,42 @@
+name: build
+
+# This repo is public, so GitHub-hosted runners cost no Actions minutes.
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build
+      - name: Build
+        run: cmake --build build --config Release --target Hub hub_tests
+      - name: Test
+        run: ctest --test-dir build -C Release --output-on-failure
+      - name: Installer (Inno Setup)
+        shell: pwsh
+        run: |
+          $iscc = "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe"
+          if (-not (Test-Path $iscc)) { choco install innosetup -y --no-progress }
+          & $iscc packaging\windows\hub.iss
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          Get-ChildItem dist
+      - name: Snapshot (checks the app starts and draws)
+        shell: pwsh
+        run: |
+          $env:ASKP_HUB_ROOT = "$env:RUNNER_TEMP\hub-root"
+          $p = Start-Process -FilePath "build\Hub_artefacts\Release\askp Hub.exe" `
+               -ArgumentList '--manifest','manifest.json','--snapshot','dist\hub-windows.png' -PassThru -Wait
+          "exit code: $($p.ExitCode)"
+          if (-not (Test-Path dist\hub-windows.png)) { Write-Warning "no snapshot written" }
+      - uses: actions/upload-artifact@v4
+        with:
+          name: askp-Hub-Windows
+          path: |
+            dist/askp-Hub-Windows-Setup.exe
+            dist/hub-windows.png
+          if-no-files-found: warn
