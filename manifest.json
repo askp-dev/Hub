@@ -30,6 +30,15 @@
             "au",
             "clap"
           ]
+        },
+        "win": {
+          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.1.0/va-0.1.0-win.zip",
+          "sha256": "361a14066a87873e72eac9ea5d6a6d371b916c991afa53b5c3b5ffcb9e37d5fe",
+          "size": 4298290,
+          "formats": [
+            "vst3",
+            "clap"
+          ]
         }
       },
       "released": "2026-11-18"
@@ -52,6 +61,14 @@
           "formats": [
             "vst3",
             "au"
+          ]
+        },
+        "win": {
+          "url": "https://github.com/askp-dev/hub/releases/download/sector-v0.1.0/sector-0.1.0-win.zip",
+          "sha256": "91cc102fc2010785d1a1d34bb5975e0d883e785fd4df00bd319c1f82b64bb1be",
+          "size": 1881904,
+          "formats": [
+            "vst3"
           ]
         }
       },
@@ -76,6 +93,15 @@
           "formats": [
             "vst3",
             "au",
+            "clap"
+          ]
+        },
+        "win": {
+          "url": "https://github.com/askp-dev/hub/releases/download/sibil-v0.1.0/sibil-0.1.0-win.zip",
+          "sha256": "9ac25fc65161882ddc66f26812c24b38399ba1fca1100484a78551b07e931ffd",
+          "size": 3655079,
+          "formats": [
+            "vst3",
             "clap"
           ]
         }
