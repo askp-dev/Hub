@@ -266,7 +266,7 @@ HubComponent::HubComponent(juce::String manifestSource, bool syncLoad)
     } else {
         refresh();
     }
-    setSize(860, 640);
+    setSize(860, 660);
 }
 
 HubComponent::~HubComponent() {
@@ -439,7 +439,7 @@ void HubComponent::resized() {
     viewport.setBounds(r.withTrimmedLeft(18).withTrimmedRight(10).withTrimmedBottom(6));
 
     const int w = viewport.getWidth() - viewport.getScrollBarThickness() - 4;
-    list.setSize(w, juce::jmax(1, cards.size() * (cardHeight + gap) + 6));
+    list.setSize(w, juce::jmax(1, cards.size() * (cardHeight + gap) - gap + 8));   // no scrollbar when it all fits
     for (int i = 0; i < cards.size(); ++i)
         cards[i]->setBounds(6, 4 + i * (cardHeight + gap), w - 8, cardHeight);
 }
