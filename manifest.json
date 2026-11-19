@@ -116,9 +116,22 @@
       "version": "0.1.0",
       "bundles": {
         "vst3": "Taste.vst3",
-        "au": "Taste.component"
+        "au": "Taste.component",
+        "clap": "Taste.clap"
       },
-      "downloads": {}
+      "downloads": {
+        "mac": {
+          "url": "https://github.com/askp-dev/hub/releases/download/taste-v0.1.0/taste-0.1.0-mac.zip",
+          "sha256": "1d7d8d3222c6c25fe8b57bbcf9aaed5824fbbe98e085575b5d36ecbc685efebe",
+          "size": 13367622,
+          "formats": [
+            "vst3",
+            "au",
+            "clap"
+          ]
+        }
+      },
+      "released": "2026-11-19"
     }
   ]
 }
