@@ -14,10 +14,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - project: Taste
-            targets: TastePlugin_VST3 TastePlugin_CLAP taste_tests taste_plugin_tests
-          - project: Sibil
-            targets: Sibil_VST3 Sibil_CLAP deesser_tests
+          - project: V-A
+            targets: VA_VST3 VA_CLAP VALab_VST3 va_tests va_plugin_tests
     steps:
       - uses: actions/checkout@v4
         with:
