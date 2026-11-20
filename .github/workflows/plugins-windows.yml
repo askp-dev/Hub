@@ -1,0 +1,96 @@
+name: Windows plugin packages
+on:
+  push:
+    branches: ['codex/**']
+    paths: ['build-input/windows-source.zip.enc', '.github/workflows/plugins-windows.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - project: V-A
+            targets: VA_VST3 VA_CLAP VALab_VST3 va_tests va_plugin_tests
+          - project: Sector
+            targets: Sector_VST3 sector_tests
+          - project: Grille
+            targets: Grille_VST3 Grille_CLAP grille_tests
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Decrypt private build source
+        shell: bash
+        env:
+          ASKP_BUILD_KEY: ${{ secrets.ASKP_WINDOWS_SOURCE_KEY }}
+        run: |
+          test -n "$ASKP_BUILD_KEY"
+          openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -md sha256 \
+            -in build-input/windows-source.zip.enc -out source.zip -pass env:ASKP_BUILD_KEY
+      - name: Extract source
+        shell: pwsh
+        run: |
+          Expand-Archive source.zip private-src
+          Expand-Archive 'private-src/${{ matrix.project }}.zip' private-project
+          Remove-Item source.zip
+      - name: Configure, compile and test with Visual Studio
+        shell: pwsh
+        run: |
+          # Private source excerpts must not appear in this public workflow's logs.
+          cmake -S private-project -B private-build *> configure.log
+          if ($LASTEXITCODE -ne 0) { throw 'Configure failed; inspect encrypted diagnostics.' }
+          $targets = '${{ matrix.targets }}'.Split(' ')
+          cmake --build private-build --config Release --parallel 4 --target $targets *> build.log
+          if ($LASTEXITCODE -ne 0) { throw 'Compile failed; inspect encrypted diagnostics.' }
+          ctest --test-dir private-build -C Release --output-on-failure *> tests.log
+          if ($LASTEXITCODE -ne 0) { throw 'Tests failed; inspect encrypted diagnostics.' }
+          Write-Output '${{ matrix.project }}: compilation and tests passed.'
+      - name: Package Hub downloads
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory windows-packages | Out-Null
+          Copy-Item private-src/source-index.json windows-packages/
+          switch ('${{ matrix.project }}') {
+            'V-A' {
+              Compress-Archive -Path private-build/VA_artefacts/Release/VST3,private-build/VA_artefacts/Release/CLAP -DestinationPath windows-packages/va-0.2.0-win.zip
+              Compress-Archive -Path private-build/VALab_artefacts/Release/VST3 -DestinationPath windows-packages/valab-0.2.0-win.zip
+            }
+            'Sector' {
+              Compress-Archive -Path private-build/Sector_artefacts/Release/VST3 -DestinationPath windows-packages/sector-0.1.1-win.zip
+            }
+            'Grille' {
+              Compress-Archive -Path private-build/Grille_artefacts/Release/VST3,private-build/Grille_artefacts/Release/CLAP,private-project/CREDITS.md,private-project/licenses -DestinationPath windows-packages/grille-0.1.0-win.zip
+            }
+          }
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.project }}-Windows-packages
+          path: windows-packages/
+          retention-days: 3
+          if-no-files-found: error
+      - name: Encrypt build diagnostics
+        if: always()
+        shell: bash
+        env:
+          ASKP_BUILD_KEY: ${{ secrets.ASKP_WINDOWS_SOURCE_KEY }}
+        run: |
+          tar -czf diagnostics.tar.gz --ignore-failed-read configure.log build.log tests.log
+          openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -md sha256 -salt \
+            -in diagnostics.tar.gz -out diagnostics.tar.gz.enc -pass env:ASKP_BUILD_KEY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ${{ matrix.project }}-encrypted-diagnostics
+          path: diagnostics.tar.gz.enc
+          retention-days: 3
+      - name: Remove decrypted source and logs
+        if: always()
+        shell: pwsh
+        run: |
+          Remove-Item -Recurse -Force private-src,private-project,private-build -ErrorAction SilentlyContinue
+          Remove-Item source.zip,configure.log,build.log,tests.log,diagnostics.tar.gz -ErrorAction SilentlyContinue
