@@ -13,7 +13,7 @@
       "id": "va",
       "name": "V/A",
       "badge": "V/A",
-      "tagline": "Analog-style channel strip: eight slots of Pre, Tape, Comp, Tone, Space, Echo and more.",
+      "tagline": "Analog-style channel strip: up to sixteen slots of Pre, Tape, Comp, EQ, Space, Echo, Drive, Amp, Pitch and more.",
       "version": "0.1.0",
       "bundles": {
         "vst3": "VA.vst3",
@@ -41,7 +41,8 @@
           ]
         }
       },
-      "released": "2026-11-18"
+      "released": "2026-11-18",
+      "notes": "0.2.0: 16 slots with one Mix per slot, a 16-band dynamic EQ, new devices (EQ, Drive, Lo-fi, Amp, Pitch, Tuning), new reverbs (Room, Ambient, Shimmer, Reverse, drawn tail shape), Comp Ratio knob, plain character names, the window keeps its size in FL Studio and Reaper, and host bypass stays in time with the plugin's latency."
     },
     {
       "id": "valab",
@@ -72,7 +73,8 @@
           ]
         }
       },
-      "released": "2026-11-20"
+      "released": "2026-11-20",
+      "notes": "0.2.0: built on V/A 0.2.0 (all its new devices and fixes). Space's table now covers all seven reverbs, with Decay and Shimmer columns."
     },
     {
       "id": "sector",
@@ -103,7 +105,8 @@
           ]
         }
       },
-      "released": "2026-11-18"
+      "released": "2026-11-18",
+      "notes": "0.1.1: host bypass now stays in time with the plugin's latency (Bypass and Deactivate sound the same)."
     },
     {
       "id": "sibil",
@@ -172,6 +175,20 @@
         }
       },
       "released": "2026-11-19"
+    },
+    {
+      "id": "grille",
+      "name": "Grille",
+      "badge": "GRL",
+      "tagline": "Guitar and bass amp, cab and mic IRs on three morphing pads.",
+      "version": "0.1.0",
+      "bundles": {
+        "vst3": "Grille.vst3",
+        "au": "Grille.component",
+        "clap": "Grille.clap"
+      },
+      "downloads": {},
+      "notes": "First test build. Bundled cab IRs: Brit 4x12 and Rect 4x12 from Jester Dyne Productions (CC0); Thick 2x12: IR: Darwin's Cat, darwinscat.com (CC BY 4.0). Full credits and licences are in the download zip."
     }
   ]
 }
