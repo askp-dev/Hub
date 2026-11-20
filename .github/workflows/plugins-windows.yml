@@ -14,12 +14,10 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - project: V-A
-            targets: VA_VST3 VA_CLAP VALab_VST3 va_tests va_plugin_tests
-          - project: Sector
-            targets: Sector_VST3 sector_tests
-          - project: Grille
-            targets: Grille_VST3 Grille_CLAP grille_tests
+          - project: Taste
+            targets: TastePlugin_VST3 TastePlugin_CLAP taste_tests taste_plugin_tests
+          - project: Sibil
+            targets: Sibil_VST3 Sibil_CLAP deesser_tests
     steps:
       - uses: actions/checkout@v4
         with:
@@ -56,6 +54,12 @@ jobs:
           New-Item -ItemType Directory windows-packages | Out-Null
           Copy-Item private-src/source-index.json windows-packages/
           switch ('${{ matrix.project }}') {
+            'Taste' {
+              Compress-Archive -Path private-build/TastePlugin_artefacts/Release/VST3,private-build/TastePlugin_artefacts/Release/CLAP -DestinationPath windows-packages/taste-0.1.1-win.zip
+            }
+            'Sibil' {
+              Compress-Archive -Path private-build/Sibil_artefacts/Release/VST3,private-build/Sibil_artefacts/Release/CLAP -DestinationPath windows-packages/sibil-0.1.1-win.zip
+            }
             'V-A' {
               Compress-Archive -Path private-build/VA_artefacts/Release/VST3,private-build/VA_artefacts/Release/CLAP -DestinationPath windows-packages/va-0.2.0-win.zip
               Compress-Archive -Path private-build/VALab_artefacts/Release/VST3 -DestinationPath windows-packages/valab-0.2.0-win.zip
@@ -79,7 +83,7 @@ jobs:
         env:
           ASKP_BUILD_KEY: ${{ secrets.ASKP_WINDOWS_SOURCE_KEY }}
         run: |
-          tar -czf diagnostics.tar.gz --ignore-failed-read configure.log build.log tests.log
+          python -c "import tarfile,pathlib; t=tarfile.open('diagnostics.tar.gz','w:gz'); [t.add(p) for p in ('configure.log','build.log','tests.log') if pathlib.Path(p).exists()]; t.close()"
           openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -md sha256 -salt \
             -in diagnostics.tar.gz -out diagnostics.tar.gz.enc -pass env:ASKP_BUILD_KEY
       - uses: actions/upload-artifact@v4
