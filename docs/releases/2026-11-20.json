@@ -1,0 +1,290 @@
+{
+  "date": "2026-11-20",
+  "hub_manifest": "https://raw.githubusercontent.com/askp-dev/Hub/main/manifest.json",
+  "macos_architectures": [
+    "arm64",
+    "x86_64"
+  ],
+  "macos_minimum": "11.0",
+  "windows_architecture": "x86_64",
+  "plugins": [
+    {
+      "id": "va",
+      "name": "V/A",
+      "version": "0.2.0",
+      "release": "https://github.com/askp-dev/Hub/releases/tag/va-v0.2.0",
+      "source_commit": "a867315484f86656edfd3efcda823be3bf7d0d14",
+      "source_pull_request": "https://github.com/askp-dev/V-A/pull/36",
+      "downloads": {
+        "mac": {
+          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.2.0/va-0.2.0-mac.zip",
+          "sha256": "d457932f3f75f41f9a1b6d783fbb3306308a0bf5eeb834043905e9b73864d152",
+          "size": 11651181,
+          "formats": [
+            "vst3",
+            "au",
+            "clap"
+          ]
+        },
+        "win": {
+          "url": "https://github.com/askp-dev/Hub/releases/download/va-v0.2.0/va-0.2.0-win.zip",
+          "sha256": "9c299dc747a5cb7eac210aee4b5892e6e937d3a42ff46a9409aef1af892c0b3e",
+          "size": 6159150,
+          "formats": [
+            "vst3",
+            "clap"
+          ]
+        }
+      }
+    },
+    {
+      "id": "valab",
+      "name": "V/A Lab",
+      "version": "0.2.0",
+      "release": "https://github.com/askp-dev/Hub/releases/tag/valab-v0.2.0",
+      "source_commit": "a867315484f86656edfd3efcda823be3bf7d0d14",
+      "source_pull_request": "https://github.com/askp-dev/V-A/pull/36",
+      "downloads": {
+        "mac": {
+          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.2.0/valab-0.2.0-mac.zip",
+          "sha256": "bceadf6f2e2f3b4b751dfb20a18485991274f9da60da1110f6cdac7827f7f5d4",
+          "size": 8364690,
+          "formats": [
+            "vst3",
+            "au"
+          ]
+        },
+        "win": {
+          "url": "https://github.com/askp-dev/Hub/releases/download/valab-v0.2.0/valab-0.2.0-win.zip",
+          "sha256": "5bc1245231c5299c26e1d79825ae1e24312c5748d00a4cdd9671c862b49c32f4",
+          "size": 3139539,
+          "formats": [
+            "vst3"
+          ]
+        }
+      }
+    },
+    {
+      "id": "sector",
+      "name": "Sector",
+      "version": "0.1.1",
+      "release": "https://github.com/askp-dev/Hub/releases/tag/sector-v0.1.1",
+      "source_commit": "46fbc1c936b75cec5f2f2ee8a86436aef9f25015",
+      "source_pull_request": null,
+      "downloads": {
+        "mac": {
+          "url": "https://github.com/askp-dev/hub/releases/download/sector-v0.1.1/sector-0.1.1-mac.zip",
+          "sha256": "c1ac2ce2550bc582c97f6ce61f12eba9164b82c578c1c1f95ce2ba63d5acaccd",
+          "size": 6286060,
+          "formats": [
+            "vst3",
+            "au"
+          ]
+        },
+        "win": {
+          "url": "https://github.com/askp-dev/Hub/releases/download/sector-v0.1.1/sector-0.1.1-win.zip",
+          "sha256": "69423c7463f7e9089a57f895d4a65d6dc454b64be97da75080f725833179dd75",
+          "size": 2388464,
+          "formats": [
+            "vst3"
+          ]
+        }
+      }
+    },
+    {
+      "id": "sibil",
+      "name": "Sibil",
+      "version": "0.1.1",
+      "release": "https://github.com/askp-dev/Hub/releases/tag/sibil-v0.1.1",
+      "source_commit": "0948a35665c15c51fbf700d77e9eae597f27bec3",
+      "source_pull_request": "https://github.com/askp-dev/Sibil/pull/1",
+      "downloads": {
+        "mac": {
+          "url": "https://github.com/askp-dev/hub/releases/download/sibil-v0.1.1/sibil-0.1.1-mac.zip",
+          "sha256": "b41f66a0001bafa356f74faee0d28e660ac144fcc124ac0b3b7bd010f616c633",
+          "size": 9259948,
+          "formats": [
+            "vst3",
+            "au",
+            "clap"
+          ]
+        },
+        "win": {
+          "url": "https://github.com/askp-dev/Hub/releases/download/sibil-v0.1.1/sibil-0.1.1-win.zip",
+          "sha256": "da01e8438d2e58e1407c1b01c7e7340703d1eea18cc884a56ba75e291d6cf1bd",
+          "size": 4664971,
+          "formats": [
+            "vst3",
+            "clap"
+          ]
+        }
+      }
+    },
+    {
+      "id": "taste",
+      "name": "Taste",
+      "version": "0.1.1",
+      "release": "https://github.com/askp-dev/Hub/releases/tag/taste-v0.1.1",
+      "source_commit": "eed077fe36256e28093f85255dc1bc6e31105825",
+      "source_pull_request": "https://github.com/askp-dev/Taste/pull/1",
+      "downloads": {
+        "mac": {
+          "url": "https://github.com/askp-dev/hub/releases/download/taste-v0.1.1/taste-0.1.1-mac.zip",
+          "sha256": "8acf36d22c47a42f3518c0696d357a8e9c314efaed0f9aac0773db114cfc2bc0",
+          "size": 13407343,
+          "formats": [
+            "vst3",
+            "au",
+            "clap"
+          ]
+        },
+        "win": {
+          "url": "https://github.com/askp-dev/Hub/releases/download/taste-v0.1.1/taste-0.1.1-win.zip",
+          "sha256": "f3a2d02cb92ab598e235a6519c96f021f59b8b2a1b28d68bad898c797489aa42",
+          "size": 5839471,
+          "formats": [
+            "vst3",
+            "clap"
+          ]
+        }
+      }
+    },
+    {
+      "id": "grille",
+      "name": "Grille",
+      "version": "0.1.0",
+      "release": "https://github.com/askp-dev/Hub/releases/tag/grille-v0.1.0",
+      "source_commit": "455d7df4d1224812c062c9648163969b6d3b1283",
+      "source_pull_request": "https://github.com/askp-dev/Grille/pull/2",
+      "downloads": {
+        "mac": {
+          "url": "https://github.com/askp-dev/hub/releases/download/grille-v0.1.0/grille-0.1.0-mac.zip",
+          "sha256": "1964f46f0d61943516290106c718a85ee6d66abfb428d266b1f564abe21698be",
+          "size": 13997684,
+          "formats": [
+            "vst3",
+            "au",
+            "clap"
+          ]
+        },
+        "win": {
+          "url": "https://github.com/askp-dev/Hub/releases/download/grille-v0.1.0/grille-0.1.0-win.zip",
+          "sha256": "5e52f83ebd679f4ca96fb3702b827b305e663dea070c6edef750d6e3149da438",
+          "size": 5903803,
+          "formats": [
+            "vst3",
+            "clap"
+          ]
+        }
+      }
+    }
+  ],
+  "verification": {
+    "mac_core_and_plugin_tests": "passed",
+    "mac_vst3_pluginval_strictness_5": "6 passed",
+    "mac_clap_validator": "4 passed",
+    "mac_auval": "6 passed",
+    "mac_bundle_signatures": "16 passed (ad-hoc signatures)",
+    "hub_core_installer_tests": "passed",
+    "hub_real_download_sandbox_installs": [
+      {
+        "id": "va",
+        "version": "0.2.0",
+        "formats": [
+          "vst3",
+          "au",
+          "clap"
+        ],
+        "installed": true
+      },
+      {
+        "id": "valab",
+        "version": "0.2.0",
+        "formats": [
+          "vst3",
+          "au"
+        ],
+        "installed": true
+      },
+      {
+        "id": "sector",
+        "version": "0.1.1",
+        "formats": [
+          "vst3",
+          "au"
+        ],
+        "installed": true
+      },
+      {
+        "id": "sibil",
+        "version": "0.1.1",
+        "formats": [
+          "vst3",
+          "au",
+          "clap"
+        ],
+        "installed": true
+      },
+      {
+        "id": "taste",
+        "version": "0.1.1",
+        "formats": [
+          "vst3",
+          "au",
+          "clap"
+        ],
+        "installed": true
+      },
+      {
+        "id": "grille",
+        "version": "0.1.0",
+        "formats": [
+          "vst3",
+          "au",
+          "clap"
+        ],
+        "installed": true
+      }
+    ],
+    "windows_builds_and_tests": "all six plugins passed in native Windows jobs",
+    "mac_ci": "https://github.com/askp-dev/V-A/actions/runs/44821870370 (passed)",
+    "all_12_release_downloads": "SHA-256, size, version, formats and archive contents verified",
+    "windows_pe_architecture": "all Windows plugin binaries verified as x86_64",
+    "grille_ir_attribution": "CREDITS.md and licenses included in Mac and Windows packages"
+  },
+  "windows_build_runs": [
+    "https://github.com/askp-dev/Hub/actions/runs/44819398110",
+    "https://github.com/askp-dev/Hub/actions/runs/44820156390",
+    "https://github.com/askp-dev/Hub/actions/runs/44821541083"
+  ],
+  "windows_jobs": [
+    {
+      "project": "Sector",
+      "conclusion": "success",
+      "url": "https://github.com/askp-dev/Hub/actions/runs/44819398110/job/136576043726"
+    },
+    {
+      "project": "Grille",
+      "conclusion": "success",
+      "url": "https://github.com/askp-dev/Hub/actions/runs/44819398110/job/136576044101"
+    },
+    {
+      "project": "Taste",
+      "conclusion": "success",
+      "url": "https://github.com/askp-dev/Hub/actions/runs/44820156390/job/136578657128"
+    },
+    {
+      "project": "Sibil",
+      "conclusion": "success",
+      "url": "https://github.com/askp-dev/Hub/actions/runs/44820156390/job/136578656445"
+    },
+    {
+      "project": "V-A",
+      "conclusion": "success",
+      "url": "https://github.com/askp-dev/Hub/actions/runs/44821541083/job/136583367186"
+    }
+  ],
+  "source_fixes": "Pushed and available in the listed pull requests; not merged by this task.",
+  "temporary_build_key_removed": true,
+  "hub_installer_latest_release": "hub-v0.1.0"
+}

@@ -6,11 +6,16 @@
 # The zip holds the format folders exactly as JUCE writes them (VST3/, AU/, CLAP/),
 # with only the bundles manifest.json names for that plugin. Upload it with the
 # command this prints, then commit manifest.json: the Hub picks it up on its next check.
-# EXTRA="path1 path2" adds files or folders at the zip root (licences, credits); the
+# Additional arguments add files or folders at the zip root (licences, credits); the
 # Hub only installs the bundles, so these ride along for anyone who opens the zip.
 set -euo pipefail
 ID="${1:?plugin id from manifest.json}"; VERSION="${2:?version}"; ART="${3:?artefacts dir}"
 PLATFORM="${4:-mac}"
+[[ "$PLATFORM" == mac || "$PLATFORM" == win ]] || { echo "platform must be mac or win" >&2; exit 1; }
+if [ "$#" -ge 4 ]; then shift 4; else shift 3; fi
+for extra in "$@"; do
+    [ -e "$extra" ] || { echo "missing extra: $extra" >&2; exit 1; }
+done
 HERE="$(cd "$(dirname "$0")/.." && pwd)"
 OUT="$HERE/dist"; mkdir -p "$OUT"
 ZIP="$OUT/$ID-$VERSION-$PLATFORM.zip"
@@ -29,12 +34,12 @@ PY
 cd "$ART"
 FOUND=()
 while read -r item; do
-    if [ -e "$item" ]; then FOUND+=("$item"); else echo "note: $item not in this build, skipped"; fi
+    if [ -e "$item" ]; then FOUND+=("$item"); else echo "missing required bundle: $item" >&2; exit 1; fi
 done <<< "$ITEMS"
 [ ${#FOUND[@]} -gt 0 ] || { echo "no bundles found in $ART"; exit 1; }
 # -y keeps symlinks as symlinks (macOS bundles may contain them); -X drops extra attributes
 zip -qryX "$ZIP" "${FOUND[@]}"
-for extra in ${EXTRA:-}; do
+for extra in "$@"; do
     (cd "$(dirname "$extra")" && zip -qrX "$ZIP" "$(basename "$extra")")
 done
 
@@ -57,5 +62,5 @@ json.dump(m, open(path, "w"), indent=2); open(path, "a").write("\n")
 PY
 echo "wrote $ZIP ($SIZE bytes, sha256 $SHA)"
 echo "manifest.json updated. Next:"
-echo "  gh release create $TAG \"$ZIP\" -R askp-dev/hub --title \"$ID $VERSION\" --notes \"...\"   (or upload with gh release upload if the tag exists)"
+echo "  gh release create $TAG \"$ZIP\" -R askp-dev/hub --latest=false --title \"$ID $VERSION\" --notes \"...\"   (or upload with gh release upload if the tag exists)"
 echo "  git commit -am \"$ID $VERSION ($PLATFORM)\" && git push"
