@@ -44,6 +44,37 @@
       "released": "2026-11-18"
     },
     {
+      "id": "valab",
+      "name": "V/A Lab",
+      "badge": "LAB",
+      "tagline": "Tester build of V/A with a Tuning panel: adjust every character's numbers by ear and export them.",
+      "version": "0.1.0",
+      "bundles": {
+        "vst3": "VA Lab.vst3",
+        "au": "VA Lab.component"
+      },
+      "downloads": {
+        "win": {
+          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.1.0/valab-0.1.0-win.zip",
+          "sha256": "afe1de025ae088c3a3015a76b17d81d9e9728161fd4bb458af9d33ad4cff8362",
+          "size": 2337757,
+          "formats": [
+            "vst3"
+          ]
+        },
+        "mac": {
+          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.1.0/valab-0.1.0-mac.zip",
+          "sha256": "02a96ef5f96b72300c25490272fe035ac0d07fa08a109c6cd1e85fc06e622540",
+          "size": 7980157,
+          "formats": [
+            "vst3",
+            "au"
+          ]
+        }
+      },
+      "released": "2026-11-20"
+    },
+    {
       "id": "sector",
       "name": "Sector",
       "badge": "SEC",
