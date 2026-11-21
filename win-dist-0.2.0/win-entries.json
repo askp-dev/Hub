@@ -1,0 +1,54 @@
+{
+ "va": {
+  "url": "https://github.com/askp-dev/hub/releases/download/va-v0.6.0/va-0.6.0-win.zip",
+  "sha256": "dbc97dd7992a8f26608a26d9d8c78b2fc067a10895a0f210507a81c844cf87c4",
+  "size": 4859664,
+  "formats": [
+   "vst3",
+   "clap"
+  ]
+ },
+ "valab": {
+  "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.6.0/valab-0.6.0-win.zip",
+  "sha256": "06465796775c3d010101626cebff8d64889dd270771caf78d875cdcdc9d0b0fc",
+  "size": 2601574,
+  "formats": [
+   "vst3"
+  ]
+ },
+ "sector": {
+  "url": "https://github.com/askp-dev/hub/releases/download/sector-v0.2.0/sector-0.2.0-win.zip",
+  "sha256": "e40d5763416157547d2b207c2e689f418074da8bdf80d6db1cfd0c5c35c8101b",
+  "size": 1995953,
+  "formats": [
+   "vst3"
+  ]
+ },
+ "sibil": {
+  "url": "https://github.com/askp-dev/hub/releases/download/sibil-v0.2.0/sibil-0.2.0-win.zip",
+  "sha256": "1f26dc9475613e67238bfdd4f177a5511413132dc03082f8eafcab5f45c3141a",
+  "size": 3865808,
+  "formats": [
+   "vst3",
+   "clap"
+  ]
+ },
+ "taste": {
+  "url": "https://github.com/askp-dev/hub/releases/download/taste-v0.2.0/taste-0.2.0-win.zip",
+  "sha256": "e6047cd81fdca14c6ccc2bd0c247f489c7fda564427941a7d52764291bab0301",
+  "size": 5264080,
+  "formats": [
+   "vst3",
+   "clap"
+  ]
+ },
+ "grille": {
+  "url": "https://github.com/askp-dev/hub/releases/download/grille-v0.2.0/grille-0.2.0-win.zip",
+  "sha256": "a2764dd5623935d19725953c3f2dbe7dee53d1dcc90a5a2f1c2dc36bf4a82931",
+  "size": 5482311,
+  "formats": [
+   "vst3",
+   "clap"
+  ]
+ }
+}
