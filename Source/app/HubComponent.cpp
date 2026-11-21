@@ -235,13 +235,8 @@ void PluginCard::resized() {
 HubComponent::HubComponent(juce::String manifestSource, bool syncLoad)
     : installer(Paths::defaults()), source(std::move(manifestSource)) {
     setLookAndFeel(&look);
-    theme.onClick = [this] {
-        saveThemePreference(! darkTheme());
-        look.refreshColours();
-        for (auto* c : cards) c->refreshStatus();
-        sendLookAndFeelChange();
-        repaint();
-    };
+    theme.onClick = [this] { saveThemePreference(! darkTheme()); themeFollow.check(); };
+    themeMenu.onThemeChanged = [this] { themeFollow.check(); };
     refreshButton.onClick = [this] { refresh(); };
     updateAll.onClick = [this] { for (auto* c : cards) if (c->hasUpdate()) c->startInstall(); };
     openFolder.onClick = [this] {
@@ -249,7 +244,7 @@ HubComponent::HubComponent(juce::String manifestSource, bool syncLoad)
         dir.createDirectory();
         dir.revealToUser();
     };
-    for (juce::Component* c : { (juce::Component*) &theme, (juce::Component*) &refreshButton, (juce::Component*) &updateAll, (juce::Component*) &openFolder })
+    for (juce::Component* c : { (juce::Component*) &theme, (juce::Component*) &themeMenu, (juce::Component*) &refreshButton, (juce::Component*) &updateAll, (juce::Component*) &openFolder })
         addAndMakeVisible(c);
     viewport.setViewedComponent(&list, false);
     viewport.setScrollBarsShown(true, false);
@@ -429,6 +424,8 @@ void HubComponent::resized() {
     auto r = getLocalBounds();
     auto header = r.removeFromTop(headerHeight).reduced(24, 20);
     theme.setBounds(header.removeFromRight(36));
+    header.removeFromRight(6);
+    themeMenu.setBounds(header.removeFromRight(44));
     header.removeFromRight(8);
     refreshButton.setBounds(header.removeFromRight(90));
     header.removeFromRight(8);
