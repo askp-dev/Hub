@@ -30,6 +30,15 @@
             "au",
             "clap"
           ]
+        },
+        "win": {
+          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.6.1/va-0.6.1-win.zip",
+          "sha256": "8698594fab9939076eeded8d54ba6961a7f5567fb99b45371f075011a6f02548",
+          "size": 4859722,
+          "formats": [
+            "vst3",
+            "clap"
+          ]
         }
       },
       "released": "2026-11-21",
@@ -53,6 +62,14 @@
           "formats": [
             "vst3",
             "au"
+          ]
+        },
+        "win": {
+          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.6.1/valab-0.6.1-win.zip",
+          "sha256": "52fa2d78f0d44170df45a82252e17df4dc400a72dc4eac38b66db04d7ea1d65a",
+          "size": 2601617,
+          "formats": [
+            "vst3"
           ]
         }
       },
@@ -78,6 +95,14 @@
             "vst3",
             "au"
           ]
+        },
+        "win": {
+          "url": "https://github.com/askp-dev/hub/releases/download/sector-v0.2.1/sector-0.2.1-win.zip",
+          "sha256": "132b6dc992a0665eee776b9b9e922e542170a11e2c4d1e010750cda6aa7e5dd7",
+          "size": 1995925,
+          "formats": [
+            "vst3"
+          ]
         }
       },
       "released": "2026-11-21",
@@ -102,6 +127,15 @@
           "formats": [
             "vst3",
             "au",
+            "clap"
+          ]
+        },
+        "win": {
+          "url": "https://github.com/askp-dev/hub/releases/download/sibil-v0.2.1/sibil-0.2.1-win.zip",
+          "sha256": "dc205360e5fed6dd701e218fffc14c4b40527756c280372a11a3c1e4d590e1fd",
+          "size": 3865815,
+          "formats": [
+            "vst3",
             "clap"
           ]
         }
@@ -130,6 +164,15 @@
             "au",
             "clap"
           ]
+        },
+        "win": {
+          "url": "https://github.com/askp-dev/hub/releases/download/taste-v0.2.1/taste-0.2.1-win.zip",
+          "sha256": "77b77ab6fd8a5381b0f8963fcecc4e69084c2ad88ba450f677ad5b6f9c830779",
+          "size": 5264132,
+          "formats": [
+            "vst3",
+            "clap"
+          ]
         }
       },
       "released": "2026-11-21",
@@ -154,6 +197,15 @@
           "formats": [
             "vst3",
             "au",
+            "clap"
+          ]
+        },
+        "win": {
+          "url": "https://github.com/askp-dev/hub/releases/download/grille-v0.2.1/grille-0.2.1-win.zip",
+          "sha256": "e647c30fb50bbc2976c5dee2c081981959ba5fb80df569d4cded57427b9f9a85",
+          "size": 5482678,
+          "formats": [
+            "vst3",
             "clap"
           ]
         }
