@@ -14,7 +14,7 @@
       "name": "V/A",
       "badge": "V/A",
       "tagline": "Analog-style channel strip: up to sixteen slots of Pre, Tape, Comp, Tone, Space, Echo, Drive, Amp, Pitch and more.",
-      "version": "0.5.1",
+      "version": "0.6.0",
       "bundles": {
         "vst3": "VA.vst3",
         "au": "VA.component",
@@ -22,9 +22,9 @@
       },
       "downloads": {
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.5.1/va-0.5.1-mac.zip",
-          "sha256": "41d800d184f1f01f8416310bb525d8a3ae72f1a0c3e9f92ba7d3bb8b4278319d",
-          "size": 12059489,
+          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.6.0/va-0.6.0-mac.zip",
+          "sha256": "6b4c745fcc4be29f89c50c39f36c1c3ea512419050bd25cc4f60e836e0bf792a",
+          "size": 12675550,
           "formats": [
             "vst3",
             "au",
@@ -32,9 +32,9 @@
           ]
         },
         "win": {
-          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.5.1/va-0.5.1-win.zip",
-          "sha256": "61dc0af5c1ab27cdc7ce093aa912eadac6bd3674fc4c935287629f7c0574fe01",
-          "size": 4645598,
+          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.6.0/va-0.6.0-win.zip",
+          "sha256": "dbc97dd7992a8f26608a26d9d8c78b2fc067a10895a0f210507a81c844cf87c4",
+          "size": 4859664,
           "formats": [
             "vst3",
             "clap"
@@ -42,78 +42,78 @@
         }
       },
       "released": "2026-11-21",
-      "notes": "0.5.1: a Hide graph button folds the graph into a slim bar so the knobs fill the panel (open by default, saved per session). 0.5.0: every control on screen; band EQ is now Tone with Character, Tube and Tilt."
+      "notes": "0.6.0: Shared askp themes: theme menu next to the light/dark button, one choice for all askp plugins. Sibil device shows the standalone's timeline graph and S Balance line. 0.5.1: a Hide graph button folds the graph into a slim bar so the knobs fill the panel (open by default, saved per session). 0.5.0: every control on screen; band EQ is now Tone with Character, Tube and Tilt."
     },
     {
       "id": "valab",
       "name": "V/A Lab",
       "badge": "LAB",
       "tagline": "Tester build of V/A with a Tuning panel: adjust every character's numbers by ear and export them.",
-      "version": "0.5.1",
+      "version": "0.6.0",
       "bundles": {
         "vst3": "VA Lab.vst3",
         "au": "VA Lab.component"
       },
       "downloads": {
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.5.1/valab-0.5.1-mac.zip",
-          "sha256": "d84ac1ee1ff8115aac16f7b96745b435d79220c44c574026479dfeea8995a09a",
-          "size": 8634163,
+          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.6.0/valab-0.6.0-mac.zip",
+          "sha256": "81978bbf0c13adfe051c8c87512e14d57c1205e3cb10e49a32229c79f03f6d86",
+          "size": 9005393,
           "formats": [
             "vst3",
             "au"
           ]
         },
         "win": {
-          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.5.1/valab-0.5.1-win.zip",
-          "sha256": "7794eed2cbe42cec76dde7ace883f5cadb2002133448e4611c450c2c9f4a24c0",
-          "size": 2506473,
+          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.6.0/valab-0.6.0-win.zip",
+          "sha256": "06465796775c3d010101626cebff8d64889dd270771caf78d875cdcdc9d0b0fc",
+          "size": 2601574,
           "formats": [
             "vst3"
           ]
         }
       },
       "released": "2026-11-21",
-      "notes": "0.5.1: built on V/A 0.5.1 (Hide graph button)."
+      "notes": "0.6.0: Shared askp themes: theme menu next to the light/dark button, one choice for all askp plugins. 0.5.1: built on V/A 0.5.1 (Hide graph button)."
     },
     {
       "id": "sector",
       "name": "Sector",
       "badge": "SEC",
       "tagline": "Split a mix by stereo position and frequency, and send each part to its own output.",
-      "version": "0.1.1",
+      "version": "0.2.0",
       "bundles": {
         "vst3": "Sector.vst3",
         "au": "Sector.component"
       },
       "downloads": {
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/sector-v0.1.1/sector-0.1.1-mac.zip",
-          "sha256": "c1ac2ce2550bc582c97f6ce61f12eba9164b82c578c1c1f95ce2ba63d5acaccd",
-          "size": 6286060,
+          "url": "https://github.com/askp-dev/hub/releases/download/sector-v0.2.0/sector-0.2.0-mac.zip",
+          "sha256": "1e26edcbbf1084ff90f79ae63758528b12b299f272129647ae7b1286241e1d93",
+          "size": 6771272,
           "formats": [
             "vst3",
             "au"
           ]
         },
         "win": {
-          "url": "https://github.com/askp-dev/Hub/releases/download/sector-v0.1.1/sector-0.1.1-win.zip",
-          "sha256": "69423c7463f7e9089a57f895d4a65d6dc454b64be97da75080f725833179dd75",
-          "size": 2388464,
+          "url": "https://github.com/askp-dev/hub/releases/download/sector-v0.2.0/sector-0.2.0-win.zip",
+          "sha256": "e40d5763416157547d2b207c2e689f418074da8bdf80d6db1cfd0c5c35c8101b",
+          "size": 1995953,
           "formats": [
             "vst3"
           ]
         }
       },
-      "released": "2026-11-20",
-      "notes": "0.1.1: host bypass now stays in time with the plugin's latency (Bypass and Deactivate sound the same)."
+      "released": "2026-11-21",
+      "notes": "0.2.0: Shared askp themes: theme menu next to the light/dark button, one choice for all askp plugins. 0.1.1: host bypass now stays in time with the plugin's latency (Bypass and Deactivate sound the same)."
     },
     {
       "id": "sibil",
       "name": "Sibil",
       "badge": "SIB",
       "tagline": "A de-esser that hears the difference between S, SH and T, and links across a vocal stack.",
-      "version": "0.1.1",
+      "version": "0.2.0",
       "bundles": {
         "vst3": "Sibil.vst3",
         "au": "Sibil.component",
@@ -121,9 +121,9 @@
       },
       "downloads": {
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/sibil-v0.1.1/sibil-0.1.1-mac.zip",
-          "sha256": "b41f66a0001bafa356f74faee0d28e660ac144fcc124ac0b3b7bd010f616c633",
-          "size": 9259948,
+          "url": "https://github.com/askp-dev/hub/releases/download/sibil-v0.2.0/sibil-0.2.0-mac.zip",
+          "sha256": "449dfb72e3d4d6b76169ccb07372066c260711406030b225079780395e6d032f",
+          "size": 9887678,
           "formats": [
             "vst3",
             "au",
@@ -131,24 +131,24 @@
           ]
         },
         "win": {
-          "url": "https://github.com/askp-dev/Hub/releases/download/sibil-v0.1.1/sibil-0.1.1-win.zip",
-          "sha256": "da01e8438d2e58e1407c1b01c7e7340703d1eea18cc884a56ba75e291d6cf1bd",
-          "size": 4664971,
+          "url": "https://github.com/askp-dev/hub/releases/download/sibil-v0.2.0/sibil-0.2.0-win.zip",
+          "sha256": "1f26dc9475613e67238bfdd4f177a5511413132dc03082f8eafcab5f45c3141a",
+          "size": 3865808,
           "formats": [
             "vst3",
             "clap"
           ]
         }
       },
-      "released": "2026-11-20",
-      "notes": "0.1.1: Host parameter text now recalls the displayed breath and plosive attenuation correctly."
+      "released": "2026-11-21",
+      "notes": "0.2.0: Shared askp themes: theme menu next to the light/dark button, one choice for all askp plugins. Host parameter text round-trips correctly. 0.1.1: Host parameter text now recalls the displayed breath and plosive attenuation correctly."
     },
     {
       "id": "taste",
       "name": "Taste",
       "badge": "TST",
       "tagline": "Build a taste profile from your own mixes and pull new mixes towards it.",
-      "version": "0.1.1",
+      "version": "0.2.0",
       "bundles": {
         "vst3": "Taste.vst3",
         "au": "Taste.component",
@@ -156,9 +156,9 @@
       },
       "downloads": {
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/taste-v0.1.1/taste-0.1.1-mac.zip",
-          "sha256": "8acf36d22c47a42f3518c0696d357a8e9c314efaed0f9aac0773db114cfc2bc0",
-          "size": 13407343,
+          "url": "https://github.com/askp-dev/hub/releases/download/taste-v0.2.0/taste-0.2.0-mac.zip",
+          "sha256": "611f72de0f20611e99c24127aba30c4ba1972d67b7c8ae81afba0882a77d5b57",
+          "size": 14035161,
           "formats": [
             "vst3",
             "au",
@@ -166,24 +166,24 @@
           ]
         },
         "win": {
-          "url": "https://github.com/askp-dev/Hub/releases/download/taste-v0.1.1/taste-0.1.1-win.zip",
-          "sha256": "f3a2d02cb92ab598e235a6519c96f021f59b8b2a1b28d68bad898c797489aa42",
-          "size": 5839471,
+          "url": "https://github.com/askp-dev/hub/releases/download/taste-v0.2.0/taste-0.2.0-win.zip",
+          "sha256": "e6047cd81fdca14c6ccc2bd0c247f489c7fda564427941a7d52764291bab0301",
+          "size": 5264080,
           "formats": [
             "vst3",
             "clap"
           ]
         }
       },
-      "released": "2026-11-20",
-      "notes": "0.1.1: Host parameter text now recalls the displayed Exaggerate multiplier."
+      "released": "2026-11-21",
+      "notes": "0.2.0: Shared askp themes: theme menu next to the light/dark button, one choice for all askp plugins. Host parameter text round-trips correctly. 0.1.1: Host parameter text now recalls the displayed Exaggerate multiplier."
     },
     {
       "id": "grille",
       "name": "Grille",
       "badge": "GRL",
       "tagline": "Guitar and bass amp, cab and mic IRs on three morphing pads.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "bundles": {
         "vst3": "Grille.vst3",
         "au": "Grille.component",
@@ -191,9 +191,9 @@
       },
       "downloads": {
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/grille-v0.1.0/grille-0.1.0-mac.zip",
-          "sha256": "1964f46f0d61943516290106c718a85ee6d66abfb428d266b1f564abe21698be",
-          "size": 13997684,
+          "url": "https://github.com/askp-dev/hub/releases/download/grille-v0.2.0/grille-0.2.0-mac.zip",
+          "sha256": "2112b12455b8dfe6c92b7863d7d70b049d8756b459fcc427b3daf51e2a51364c",
+          "size": 14623098,
           "formats": [
             "vst3",
             "au",
@@ -201,17 +201,17 @@
           ]
         },
         "win": {
-          "url": "https://github.com/askp-dev/Hub/releases/download/grille-v0.1.0/grille-0.1.0-win.zip",
-          "sha256": "5e52f83ebd679f4ca96fb3702b827b305e663dea070c6edef750d6e3149da438",
-          "size": 5903803,
+          "url": "https://github.com/askp-dev/hub/releases/download/grille-v0.2.0/grille-0.2.0-win.zip",
+          "sha256": "a2764dd5623935d19725953c3f2dbe7dee53d1dcc90a5a2f1c2dc36bf4a82931",
+          "size": 5482311,
           "formats": [
             "vst3",
             "clap"
           ]
         }
       },
-      "notes": "First test build. Bundled cab IRs: Brit 4x12 and Rect 4x12 from Jester Dyne Productions (CC0); Thick 2x12: IR: Darwin's Cat, darwinscat.com (CC BY 4.0). Full credits and licences are in the download zip.",
-      "released": "2026-11-20"
+      "notes": "0.2.0: Shared askp themes: theme menu next to the light/dark button, one choice for all askp plugins. Host parameter text round-trips correctly. First test build. Bundled cab IRs: Brit 4x12 and Rect 4x12 from Jester Dyne Productions (CC0); Thick 2x12: IR: Darwin's Cat, darwinscat.com (CC BY 4.0). Full credits and licences are in the download zip.",
+      "released": "2026-11-21"
     }
   ]
 }
