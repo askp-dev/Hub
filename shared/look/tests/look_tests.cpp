@@ -62,7 +62,11 @@ int main(int argc, char** argv) {
     juce::ScopedJuceInitialiser_GUI gui;
     const auto dir = juce::File::getSpecialLocation(juce::File::tempDirectory).getChildFile("askp-look-test");
     dir.deleteRecursively(); dir.createDirectory();
+   #if JUCE_WINDOWS
+    _putenv_s("ASKP_LOOK_DIR", dir.getFullPathName().toRawUTF8());
+   #else
     setenv("ASKP_LOOK_DIR", dir.getFullPathName().toRawUTF8(), 1);
+   #endif
 
     // 1. built-ins: round trip + contrast
     for (auto& t : theme::builtIns()) {
