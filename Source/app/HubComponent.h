@@ -76,6 +76,8 @@ private:
     bool bannerIsHubUpdate = false, loading = false;
 
     ui::ThemeButton theme;
+    ui::ThemeMenuButton themeMenu;
+    ui::ThemeFollower themeFollow { *this, look, [this] { for (auto* c : cards) c->refreshStatus(); } };
     juce::TextButton refreshButton { "Refresh" }, updateAll { "Update all" }, openFolder { "Show folder" };
     juce::Viewport viewport;
     juce::Component list;
