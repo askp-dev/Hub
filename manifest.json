@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "hub": {
-    "version": "0.1.0",
-    "notes": "First test build.",
+    "version": "0.2.0",
+    "notes": "Theme menu: pick a look for the Hub and every askp plugin.",
     "download": {
       "mac": "https://github.com/askp-dev/hub/releases/latest/download/askp-Hub-macOS.dmg",
       "win": "https://github.com/askp-dev/hub/releases/latest/download/askp-Hub-Windows-Setup.exe"
