@@ -30,6 +30,15 @@
             "au",
             "clap"
           ]
+        },
+        "win": {
+          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.5.1/va-0.5.1-win.zip",
+          "sha256": "61dc0af5c1ab27cdc7ce093aa912eadac6bd3674fc4c935287629f7c0574fe01",
+          "size": 4645598,
+          "formats": [
+            "vst3",
+            "clap"
+          ]
         }
       },
       "released": "2026-11-21",
@@ -53,6 +62,14 @@
           "formats": [
             "vst3",
             "au"
+          ]
+        },
+        "win": {
+          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.5.1/valab-0.5.1-win.zip",
+          "sha256": "7794eed2cbe42cec76dde7ace883f5cadb2002133448e4611c450c2c9f4a24c0",
+          "size": 2506473,
+          "formats": [
+            "vst3"
           ]
         }
       },
