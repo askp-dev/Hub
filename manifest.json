@@ -14,7 +14,7 @@
       "name": "V/A",
       "badge": "V/A",
       "tagline": "Analog-style channel strip: up to sixteen slots of Pre, Tape, Comp, EQ, Space, Echo, Drive, Amp, Pitch and more.",
-      "version": "0.3.0",
+      "version": "0.4.0",
       "bundles": {
         "vst3": "VA.vst3",
         "au": "VA.component",
@@ -22,26 +22,16 @@
       },
       "downloads": {
         "win": {
-          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.3.0/va-0.3.0-win.zip",
-          "sha256": "0ba4d50f9d86a63c9af46eef5ea7d0455143eb4ebb6567ad58dd1abd4fb68ff4",
-          "size": 4547704,
+          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.4.0/va-0.4.0-win.zip",
+          "sha256": "4cd089fa1b0e03eb9d7dbf2d33fa7aaafff26a72deaab93148e1978853d39fc3",
+          "size": 4617730,
           "formats": [
             "vst3",
-            "clap"
-          ]
-        },
-        "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.3.0/va-0.3.0-mac.zip",
-          "sha256": "e873d022000d5f2081b6faf0e7dc912fc654ce9f656556ef9c418c079c16323a",
-          "size": 11761328,
-          "formats": [
-            "vst3",
-            "au",
             "clap"
           ]
         }
       },
-      "released": "2026-11-20",
+      "released": "2026-11-21",
       "notes": "0.3.0: Space Freeze and a room view on the graph; Echo Fidelity, ping-pong Width/Jump-Slide/rate (repeats, beats or ms) and a new Grain echo; Motion Flanger, LFO shapes (Sine, Triangle, Saw, Random), 1-6 voices with draggable offsets and a wet-vs-dry graph; Lo-fi Low Cut, Cassette/Glitch/Digital modes with an Events rate and four noise types; Pitch Double and two harmony voices in a key and scale."
     },
     {
@@ -49,31 +39,22 @@
       "name": "V/A Lab",
       "badge": "LAB",
       "tagline": "Tester build of V/A with a Tuning panel: adjust every character's numbers by ear and export them.",
-      "version": "0.3.0",
+      "version": "0.4.0",
       "bundles": {
         "vst3": "VA Lab.vst3",
         "au": "VA Lab.component"
       },
       "downloads": {
         "win": {
-          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.3.0/valab-0.3.0-win.zip",
-          "sha256": "0610cc9d03897cf8a9e6db13ac555770bbc59226da20d8975e258833d649d8ed",
-          "size": 2457521,
+          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.4.0/valab-0.4.0-win.zip",
+          "sha256": "75b4fc51216b4f4a5eaf71187f6b4df0736c017b827834d1f3438825babe487f",
+          "size": 2491617,
           "formats": [
             "vst3"
           ]
-        },
-        "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.3.0/valab-0.3.0-mac.zip",
-          "sha256": "fde091e8ccf0bc46593ca4c6feeafc7518c3aec33e62d3ebafdf6793d412475d",
-          "size": 8443044,
-          "formats": [
-            "vst3",
-            "au"
-          ]
         }
       },
-      "released": "2026-11-20",
+      "released": "2026-11-21",
       "notes": "0.3.0: built on V/A 0.3.0 (all its new controls). The Motion table gains a Flanger row and the Echo table a Grain echo row with a Grain column."
     },
     {
