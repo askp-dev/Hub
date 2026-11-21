@@ -14,67 +14,48 @@
       "name": "V/A",
       "badge": "V/A",
       "tagline": "Analog-style channel strip: up to sixteen slots of Pre, Tape, Comp, EQ, Space, Echo, Drive, Amp, Pitch and more.",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "bundles": {
         "vst3": "VA.vst3",
         "au": "VA.component",
         "clap": "VA.clap"
       },
       "downloads": {
-        "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.2.0/va-0.2.0-mac.zip",
-          "sha256": "d457932f3f75f41f9a1b6d783fbb3306308a0bf5eeb834043905e9b73864d152",
-          "size": 11651181,
-          "formats": [
-            "vst3",
-            "au",
-            "clap"
-          ]
-        },
         "win": {
-          "url": "https://github.com/askp-dev/Hub/releases/download/va-v0.2.0/va-0.2.0-win.zip",
-          "sha256": "9c299dc747a5cb7eac210aee4b5892e6e937d3a42ff46a9409aef1af892c0b3e",
-          "size": 6159150,
+          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.3.0/va-0.3.0-win.zip",
+          "sha256": "0ba4d50f9d86a63c9af46eef5ea7d0455143eb4ebb6567ad58dd1abd4fb68ff4",
+          "size": 4547704,
           "formats": [
             "vst3",
             "clap"
           ]
         }
       },
-      "released": "2026-11-20",
-      "notes": "0.2.0: 16 slots with one Mix per slot, a 16-band dynamic EQ, new devices (EQ, Drive, Lo-fi, Amp, Pitch, Tuning), new reverbs (Room, Ambient, Shimmer, Reverse, drawn tail shape), Comp Ratio knob, plain character names, the window keeps its size in FL Studio and Reaper, and host bypass stays in time with the plugin's latency."
+      "released": "2026-11-21",
+      "notes": "0.3.0: Space Freeze and a room view on the graph; Echo Fidelity, ping-pong Width/Jump-Slide/rate (repeats, beats or ms) and a new Grain echo; Motion Flanger, LFO shapes (Sine, Triangle, Saw, Random), 1-6 voices with draggable offsets and a wet-vs-dry graph; Lo-fi Low Cut, Cassette/Glitch/Digital modes with an Events rate and four noise types; Pitch Double and two harmony voices in a key and scale."
     },
     {
       "id": "valab",
       "name": "V/A Lab",
       "badge": "LAB",
       "tagline": "Tester build of V/A with a Tuning panel: adjust every character's numbers by ear and export them.",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "bundles": {
         "vst3": "VA Lab.vst3",
         "au": "VA Lab.component"
       },
       "downloads": {
-        "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.2.0/valab-0.2.0-mac.zip",
-          "sha256": "bceadf6f2e2f3b4b751dfb20a18485991274f9da60da1110f6cdac7827f7f5d4",
-          "size": 8364690,
-          "formats": [
-            "vst3",
-            "au"
-          ]
-        },
         "win": {
-          "url": "https://github.com/askp-dev/Hub/releases/download/valab-v0.2.0/valab-0.2.0-win.zip",
-          "sha256": "5bc1245231c5299c26e1d79825ae1e24312c5748d00a4cdd9671c862b49c32f4",
-          "size": 3139539,
+          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.3.0/valab-0.3.0-win.zip",
+          "sha256": "0610cc9d03897cf8a9e6db13ac555770bbc59226da20d8975e258833d649d8ed",
+          "size": 2457521,
           "formats": [
             "vst3"
           ]
         }
       },
-      "released": "2026-11-20",
-      "notes": "0.2.0: built on V/A 0.2.0 (all its new devices and fixes). Space's table now covers all seven reverbs, with Decay and Shimmer columns."
+      "released": "2026-11-21",
+      "notes": "0.3.0: built on V/A 0.3.0 (all its new controls). The Motion table gains a Flanger row and the Echo table a Grain echo row with a Grain column."
     },
     {
       "id": "sector",
