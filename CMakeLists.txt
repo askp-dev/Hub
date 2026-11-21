@@ -17,6 +17,8 @@ FetchContent_Declare(JUCE
     GIT_TAG 8.0.4
     GIT_SHALLOW ON)
 FetchContent_MakeAvailable(JUCE)
+include(cmake/JuceImeFix.cmake)
+askp_patch_juce_ime("${juce_SOURCE_DIR}")
 
 set(HUB_DEFS
     HUB_VERSION="${PROJECT_VERSION}"
