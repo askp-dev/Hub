@@ -13,27 +13,18 @@
       "id": "va",
       "name": "V/A",
       "badge": "V/A",
-      "tagline": "Analog-style channel strip: up to sixteen slots of Pre, Tape, Comp, EQ, Space, Echo, Drive, Amp, Pitch and more.",
-      "version": "0.4.1",
+      "tagline": "Analog-style channel strip: up to sixteen slots of Pre, Tape, Comp, Tone, Space, Echo, Drive, Amp, Pitch and more.",
+      "version": "0.5.0",
       "bundles": {
         "vst3": "VA.vst3",
         "au": "VA.component",
         "clap": "VA.clap"
       },
       "downloads": {
-        "win": {
-          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.4.1/va-0.4.1-win.zip",
-          "sha256": "e644e60e5dccea4575dcbdf9e2cbc9be5b7a17fb9066685e62b7b060983a7813",
-          "size": 4616950,
-          "formats": [
-            "vst3",
-            "clap"
-          ]
-        },
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.4.1/va-0.4.1-mac.zip",
-          "sha256": "5372be1003cd8b3500adf40cf83abd71f146ac67c33637f562275265d5e849f4",
-          "size": 11979616,
+          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.5.0/va-0.5.0-mac.zip",
+          "sha256": "b4ff1ce56975a85761d80c8bc9aeae5818cb6c6ba8e2bd2cd5bc12e8ea259bd2",
+          "size": 12041178,
           "formats": [
             "vst3",
             "au",
@@ -42,31 +33,23 @@
         }
       },
       "released": "2026-11-21",
-      "notes": "0.4.1: the window reopens at the size you left it (fixes windows reopening small)."
+      "notes": "0.5.0: every control is on screen (main row plus a detail strip, no more second page). Band EQ is now Tone, with Character (Clean, Console, Passive), Tube and a Tilt band; old Tone slots convert automatically."
     },
     {
       "id": "valab",
       "name": "V/A Lab",
       "badge": "LAB",
       "tagline": "Tester build of V/A with a Tuning panel: adjust every character's numbers by ear and export them.",
-      "version": "0.4.1",
+      "version": "0.5.0",
       "bundles": {
         "vst3": "VA Lab.vst3",
         "au": "VA Lab.component"
       },
       "downloads": {
-        "win": {
-          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.4.1/valab-0.4.1-win.zip",
-          "sha256": "91347329b5cda9c114d9bc6f1d6272839681e098a7f721ed353ff42eb3f68337",
-          "size": 2491538,
-          "formats": [
-            "vst3"
-          ]
-        },
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.4.1/valab-0.4.1-mac.zip",
-          "sha256": "fc335a61c51b7ef4512f154e834e3080d6db7771bfcff018a988688f2181aca3",
-          "size": 8584367,
+          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.5.0/valab-0.5.0-mac.zip",
+          "sha256": "683d364391822e0f517189a7a4c5edbe263987c2c6e2b11fd1771c7e0d214926",
+          "size": 8628370,
           "formats": [
             "vst3",
             "au"
@@ -74,7 +57,7 @@
         }
       },
       "released": "2026-11-21",
-      "notes": "0.4.1: built on V/A 0.4.1 (window size fix)."
+      "notes": "0.5.0: built on V/A 0.5.0 (all controls on screen, new Tone)."
     },
     {
       "id": "sector",
