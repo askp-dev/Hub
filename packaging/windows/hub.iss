@@ -6,7 +6,7 @@
 #ifndef AppExe
   #define AppExe "..\..\build\Hub_artefacts\Release\askp Hub.exe"
 #endif
-#define AppVersion "0.1.0"
+#define AppVersion "0.2.0"
 
 [Setup]
 AppId={{8300EC93-7637-4FDC-AABD-A6D2AE06A8D1}
