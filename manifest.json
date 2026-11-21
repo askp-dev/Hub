@@ -29,10 +29,20 @@
             "vst3",
             "clap"
           ]
+        },
+        "mac": {
+          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.4.0/va-0.4.0-mac.zip",
+          "sha256": "5089187e0fcf22732638ce00931b70d3338ff58a5ccd7e293ffa4066b9ff51d8",
+          "size": 11981623,
+          "formats": [
+            "vst3",
+            "au",
+            "clap"
+          ]
         }
       },
-      "released": "2026-11-21",
-      "notes": "0.3.0: Space Freeze and a room view on the graph; Echo Fidelity, ping-pong Width/Jump-Slide/rate (repeats, beats or ms) and a new Grain echo; Motion Flanger, LFO shapes (Sine, Triangle, Saw, Random), 1-6 voices with draggable offsets and a wet-vs-dry graph; Lo-fi Low Cut, Cassette/Glitch/Digital modes with an Events rate and four noise types; Pitch Double and two harmony voices in a key and scale."
+      "released": "2026-11-20",
+      "notes": "0.4.0: cleaner Pitch and Tuning (less garbling), Tuning Humanize/Sustain/Strength, Knob EQ, Sibil de-esser device, EQ dynamics on the graph, insert/remove slots, dropdowns, double-click to type values."
     },
     {
       "id": "valab",
@@ -52,10 +62,19 @@
           "formats": [
             "vst3"
           ]
+        },
+        "mac": {
+          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.4.0/valab-0.4.0-mac.zip",
+          "sha256": "e7fb8cadc42f38dac10ab9fb4ffc70ff8b5d28b2980c523ca314e49509e5cd61",
+          "size": 8584474,
+          "formats": [
+            "vst3",
+            "au"
+          ]
         }
       },
-      "released": "2026-11-21",
-      "notes": "0.3.0: built on V/A 0.3.0 (all its new controls). The Motion table gains a Flanger row and the Echo table a Grain echo row with a Grain column."
+      "released": "2026-11-20",
+      "notes": "0.4.0: cleaner Pitch and Tuning (less garbling), Tuning Humanize/Sustain/Strength, Knob EQ, Sibil de-esser device, EQ dynamics on the graph, insert/remove slots, dropdowns, double-click to type values."
     },
     {
       "id": "sector",
