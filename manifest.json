@@ -14,7 +14,7 @@
       "name": "V/A",
       "badge": "V/A",
       "tagline": "Analog-style channel strip: up to sixteen slots of Pre, Tape, Comp, EQ, Space, Echo, Drive, Amp, Pitch and more.",
-      "version": "0.4.0",
+      "version": "0.4.1",
       "bundles": {
         "vst3": "VA.vst3",
         "au": "VA.component",
@@ -22,18 +22,18 @@
       },
       "downloads": {
         "win": {
-          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.4.0/va-0.4.0-win.zip",
-          "sha256": "4cd089fa1b0e03eb9d7dbf2d33fa7aaafff26a72deaab93148e1978853d39fc3",
-          "size": 4617730,
+          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.4.1/va-0.4.1-win.zip",
+          "sha256": "e644e60e5dccea4575dcbdf9e2cbc9be5b7a17fb9066685e62b7b060983a7813",
+          "size": 4616950,
           "formats": [
             "vst3",
             "clap"
           ]
         },
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.4.0/va-0.4.0-mac.zip",
-          "sha256": "5089187e0fcf22732638ce00931b70d3338ff58a5ccd7e293ffa4066b9ff51d8",
-          "size": 11981623,
+          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.4.1/va-0.4.1-mac.zip",
+          "sha256": "5372be1003cd8b3500adf40cf83abd71f146ac67c33637f562275265d5e849f4",
+          "size": 11979616,
           "formats": [
             "vst3",
             "au",
@@ -41,40 +41,40 @@
           ]
         }
       },
-      "released": "2026-11-20",
-      "notes": "0.4.0: cleaner Pitch and Tuning (less garbling), Tuning Humanize/Sustain/Strength, Knob EQ, Sibil de-esser device, EQ dynamics on the graph, insert/remove slots, dropdowns, double-click to type values."
+      "released": "2026-11-21",
+      "notes": "0.4.1: the window reopens at the size you left it (fixes windows reopening small)."
     },
     {
       "id": "valab",
       "name": "V/A Lab",
       "badge": "LAB",
       "tagline": "Tester build of V/A with a Tuning panel: adjust every character's numbers by ear and export them.",
-      "version": "0.4.0",
+      "version": "0.4.1",
       "bundles": {
         "vst3": "VA Lab.vst3",
         "au": "VA Lab.component"
       },
       "downloads": {
         "win": {
-          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.4.0/valab-0.4.0-win.zip",
-          "sha256": "75b4fc51216b4f4a5eaf71187f6b4df0736c017b827834d1f3438825babe487f",
-          "size": 2491617,
+          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.4.1/valab-0.4.1-win.zip",
+          "sha256": "91347329b5cda9c114d9bc6f1d6272839681e098a7f721ed353ff42eb3f68337",
+          "size": 2491538,
           "formats": [
             "vst3"
           ]
         },
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.4.0/valab-0.4.0-mac.zip",
-          "sha256": "e7fb8cadc42f38dac10ab9fb4ffc70ff8b5d28b2980c523ca314e49509e5cd61",
-          "size": 8584474,
+          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.4.1/valab-0.4.1-mac.zip",
+          "sha256": "fc335a61c51b7ef4512f154e834e3080d6db7771bfcff018a988688f2181aca3",
+          "size": 8584367,
           "formats": [
             "vst3",
             "au"
           ]
         }
       },
-      "released": "2026-11-20",
-      "notes": "0.4.0: cleaner Pitch and Tuning (less garbling), Tuning Humanize/Sustain/Strength, Knob EQ, Sibil de-esser device, EQ dynamics on the graph, insert/remove slots, dropdowns, double-click to type values."
+      "released": "2026-11-21",
+      "notes": "0.4.1: built on V/A 0.4.1 (window size fix)."
     },
     {
       "id": "sector",
