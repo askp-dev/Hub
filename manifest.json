@@ -14,7 +14,7 @@
       "name": "V/A",
       "badge": "V/A",
       "tagline": "Analog-style channel strip: up to sixteen slots of Pre, Tape, Comp, Tone, Space, Echo, Drive, Amp, Pitch and more.",
-      "version": "0.6.0",
+      "version": "0.6.1",
       "bundles": {
         "vst3": "VA.vst3",
         "au": "VA.component",
@@ -22,21 +22,12 @@
       },
       "downloads": {
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.6.0/va-0.6.0-mac.zip",
-          "sha256": "6b4c745fcc4be29f89c50c39f36c1c3ea512419050bd25cc4f60e836e0bf792a",
-          "size": 12675550,
+          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.6.1/va-0.6.1-mac.zip",
+          "sha256": "1d29eb0765b96d48c1d2669788bbb70643eaa65ea266a001065f4f09cf4bee5b",
+          "size": 12566761,
           "formats": [
             "vst3",
             "au",
-            "clap"
-          ]
-        },
-        "win": {
-          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.6.0/va-0.6.0-win.zip",
-          "sha256": "dbc97dd7992a8f26608a26d9d8c78b2fc067a10895a0f210507a81c844cf87c4",
-          "size": 4859664,
-          "formats": [
-            "vst3",
             "clap"
           ]
         }
@@ -49,27 +40,19 @@
       "name": "V/A Lab",
       "badge": "LAB",
       "tagline": "Tester build of V/A with a Tuning panel: adjust every character's numbers by ear and export them.",
-      "version": "0.6.0",
+      "version": "0.6.1",
       "bundles": {
         "vst3": "VA Lab.vst3",
         "au": "VA Lab.component"
       },
       "downloads": {
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.6.0/valab-0.6.0-mac.zip",
-          "sha256": "81978bbf0c13adfe051c8c87512e14d57c1205e3cb10e49a32229c79f03f6d86",
-          "size": 9005393,
+          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.6.1/valab-0.6.1-mac.zip",
+          "sha256": "6c12c9dd9c75df9c83dbe1017202281f81a9805406faa7eaa09221c178d5768c",
+          "size": 8941107,
           "formats": [
             "vst3",
             "au"
-          ]
-        },
-        "win": {
-          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.6.0/valab-0.6.0-win.zip",
-          "sha256": "06465796775c3d010101626cebff8d64889dd270771caf78d875cdcdc9d0b0fc",
-          "size": 2601574,
-          "formats": [
-            "vst3"
           ]
         }
       },
@@ -81,27 +64,19 @@
       "name": "Sector",
       "badge": "SEC",
       "tagline": "Split a mix by stereo position and frequency, and send each part to its own output.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "bundles": {
         "vst3": "Sector.vst3",
         "au": "Sector.component"
       },
       "downloads": {
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/sector-v0.2.0/sector-0.2.0-mac.zip",
-          "sha256": "1e26edcbbf1084ff90f79ae63758528b12b299f272129647ae7b1286241e1d93",
-          "size": 6771272,
+          "url": "https://github.com/askp-dev/hub/releases/download/sector-v0.2.1/sector-0.2.1-mac.zip",
+          "sha256": "31e5058358bc25a3ac56ff89c4f5dec7e75c1a06a416a0f72c8ffc5225e5957c",
+          "size": 6715129,
           "formats": [
             "vst3",
             "au"
-          ]
-        },
-        "win": {
-          "url": "https://github.com/askp-dev/hub/releases/download/sector-v0.2.0/sector-0.2.0-win.zip",
-          "sha256": "e40d5763416157547d2b207c2e689f418074da8bdf80d6db1cfd0c5c35c8101b",
-          "size": 1995953,
-          "formats": [
-            "vst3"
           ]
         }
       },
@@ -113,7 +88,7 @@
       "name": "Sibil",
       "badge": "SIB",
       "tagline": "A de-esser that hears the difference between S, SH and T, and links across a vocal stack.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "bundles": {
         "vst3": "Sibil.vst3",
         "au": "Sibil.component",
@@ -121,21 +96,12 @@
       },
       "downloads": {
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/sibil-v0.2.0/sibil-0.2.0-mac.zip",
-          "sha256": "449dfb72e3d4d6b76169ccb07372066c260711406030b225079780395e6d032f",
-          "size": 9887678,
+          "url": "https://github.com/askp-dev/hub/releases/download/sibil-v0.2.1/sibil-0.2.1-mac.zip",
+          "sha256": "7161cc696328a32cb03f8a9e34c20bcc50561f25a2d5c96faef75aec6874d078",
+          "size": 9800344,
           "formats": [
             "vst3",
             "au",
-            "clap"
-          ]
-        },
-        "win": {
-          "url": "https://github.com/askp-dev/hub/releases/download/sibil-v0.2.0/sibil-0.2.0-win.zip",
-          "sha256": "1f26dc9475613e67238bfdd4f177a5511413132dc03082f8eafcab5f45c3141a",
-          "size": 3865808,
-          "formats": [
-            "vst3",
             "clap"
           ]
         }
@@ -148,7 +114,7 @@
       "name": "Taste",
       "badge": "TST",
       "tagline": "Build a taste profile from your own mixes and pull new mixes towards it.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "bundles": {
         "vst3": "Taste.vst3",
         "au": "Taste.component",
@@ -156,21 +122,12 @@
       },
       "downloads": {
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/taste-v0.2.0/taste-0.2.0-mac.zip",
-          "sha256": "611f72de0f20611e99c24127aba30c4ba1972d67b7c8ae81afba0882a77d5b57",
-          "size": 14035161,
+          "url": "https://github.com/askp-dev/hub/releases/download/taste-v0.2.1/taste-0.2.1-mac.zip",
+          "sha256": "8a7f4b3e09251a938cbdf010a8f6c1d746ac1f3dd236d8d1d4fde27140ccce30",
+          "size": 13903932,
           "formats": [
             "vst3",
             "au",
-            "clap"
-          ]
-        },
-        "win": {
-          "url": "https://github.com/askp-dev/hub/releases/download/taste-v0.2.0/taste-0.2.0-win.zip",
-          "sha256": "e6047cd81fdca14c6ccc2bd0c247f489c7fda564427941a7d52764291bab0301",
-          "size": 5264080,
-          "formats": [
-            "vst3",
             "clap"
           ]
         }
@@ -183,7 +140,7 @@
       "name": "Grille",
       "badge": "GRL",
       "tagline": "Guitar and bass amp, cab and mic IRs on three morphing pads.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "bundles": {
         "vst3": "Grille.vst3",
         "au": "Grille.component",
@@ -191,21 +148,12 @@
       },
       "downloads": {
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/grille-v0.2.0/grille-0.2.0-mac.zip",
-          "sha256": "2112b12455b8dfe6c92b7863d7d70b049d8756b459fcc427b3daf51e2a51364c",
-          "size": 14623098,
+          "url": "https://github.com/askp-dev/hub/releases/download/grille-v0.2.1/grille-0.2.1-mac.zip",
+          "sha256": "50c720abad20e8428e6c03babe5a02756af24bd7751bb3397896ea888834441a",
+          "size": 14492158,
           "formats": [
             "vst3",
             "au",
-            "clap"
-          ]
-        },
-        "win": {
-          "url": "https://github.com/askp-dev/hub/releases/download/grille-v0.2.0/grille-0.2.0-win.zip",
-          "sha256": "a2764dd5623935d19725953c3f2dbe7dee53d1dcc90a5a2f1c2dc36bf4a82931",
-          "size": 5482311,
-          "formats": [
-            "vst3",
             "clap"
           ]
         }
