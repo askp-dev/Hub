@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(Hub VERSION 0.1.0 LANGUAGES C CXX)
+project(Hub VERSION 0.2.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -17,6 +17,8 @@ FetchContent_Declare(JUCE
     GIT_TAG 8.0.4
     GIT_SHALLOW ON)
 FetchContent_MakeAvailable(JUCE)
+include(cmake/JuceImeFix.cmake)
+askp_patch_juce_ime("${juce_SOURCE_DIR}")
 
 set(HUB_DEFS
     HUB_VERSION="${PROJECT_VERSION}"
@@ -41,7 +43,7 @@ juce_add_gui_app(Hub
     ICON_BIG "${CMAKE_CURRENT_SOURCE_DIR}/packaging/icon.png"
     NEEDS_CURL TRUE
     NEEDS_WEB_BROWSER FALSE)
-target_sources(Hub PRIVATE Source/app/Main.cpp Source/app/HubComponent.cpp)
+target_sources(Hub PRIVATE Source/app/Main.cpp Source/app/HubComponent.cpp Source/app/look/AskpFonts.cpp)
 target_compile_definitions(Hub PRIVATE JUCE_MODAL_LOOPS_PERMITTED=1)   # headless --install check
 target_link_libraries(Hub PRIVATE hub_core juce::juce_gui_basics
                       PUBLIC juce::juce_recommended_config_flags juce::juce_recommended_warning_flags)
@@ -52,3 +54,10 @@ juce_add_console_app(hub_tests PRODUCT_NAME "hub_tests" NEEDS_CURL TRUE)
 target_sources(hub_tests PRIVATE tests/hub_tests.cpp)
 target_link_libraries(hub_tests PRIVATE hub_core juce::juce_recommended_config_flags)
 add_test(NAME hub_tests COMMAND hub_tests)
+
+# --- tests: the shared theme engine (shared/look), run under xvfb on Linux ---
+juce_add_console_app(look_tests PRODUCT_NAME "look_tests")
+target_sources(look_tests PRIVATE shared/look/tests/look_tests.cpp shared/look/tests/fonts.cpp)
+target_compile_definitions(look_tests PRIVATE JUCE_WEB_BROWSER=0 JUCE_USE_CURL=0 JUCE_STANDALONE_APPLICATION=1)
+target_link_libraries(look_tests PRIVATE juce::juce_gui_basics juce::juce_recommended_config_flags)
+add_test(NAME look_tests COMMAND look_tests)
