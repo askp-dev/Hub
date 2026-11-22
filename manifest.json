@@ -14,7 +14,7 @@
       "name": "V/A",
       "badge": "V/A",
       "tagline": "Analog-style channel strip: up to sixteen slots of Pre, Tape, Comp, Tone, Space, Echo, Drive, Amp, Pitch and more.",
-      "version": "0.6.1",
+      "version": "0.6.2",
       "bundles": {
         "vst3": "VA.vst3",
         "au": "VA.component",
@@ -22,9 +22,9 @@
       },
       "downloads": {
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.6.1/va-0.6.1-mac.zip",
-          "sha256": "1d29eb0765b96d48c1d2669788bbb70643eaa65ea266a001065f4f09cf4bee5b",
-          "size": 12566761,
+          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.6.2/va-0.6.2-mac.zip",
+          "sha256": "28c7900d905d00f8f23f09efd4f5e850cad867ad10ccf7e1997dd5c04bb19d6d",
+          "size": 12755982,
           "formats": [
             "vst3",
             "au",
@@ -32,9 +32,9 @@
           ]
         },
         "win": {
-          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.6.1/va-0.6.1-win.zip",
-          "sha256": "8698594fab9939076eeded8d54ba6961a7f5567fb99b45371f075011a6f02548",
-          "size": 4859722,
+          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.6.2/va-0.6.2-win.zip",
+          "sha256": "7d08c476a6f37236dd2357a3235605e65a687bc3161eaf775051ed917b1cfbb8",
+          "size": 4886824,
           "formats": [
             "vst3",
             "clap"
@@ -49,25 +49,25 @@
       "name": "V/A Lab",
       "badge": "LAB",
       "tagline": "Tester build of V/A with a Tuning panel: adjust every character's numbers by ear and export them.",
-      "version": "0.6.1",
+      "version": "0.6.2",
       "bundles": {
         "vst3": "VA Lab.vst3",
         "au": "VA Lab.component"
       },
       "downloads": {
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.6.1/valab-0.6.1-mac.zip",
-          "sha256": "6c12c9dd9c75df9c83dbe1017202281f81a9805406faa7eaa09221c178d5768c",
-          "size": 8941107,
+          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.6.2/valab-0.6.2-mac.zip",
+          "sha256": "30d0b8fcdad03f348a814fcc0011272464b23f4df20388ec39b48549ff0af288",
+          "size": 9056390,
           "formats": [
             "vst3",
             "au"
           ]
         },
         "win": {
-          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.6.1/valab-0.6.1-win.zip",
-          "sha256": "52fa2d78f0d44170df45a82252e17df4dc400a72dc4eac38b66db04d7ea1d65a",
-          "size": 2601617,
+          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.6.2/valab-0.6.2-win.zip",
+          "sha256": "ba2bca7387f80aa0239aa15725f2162be4163378bba323f05476aadf923b12a4",
+          "size": 2616485,
           "formats": [
             "vst3"
           ]
