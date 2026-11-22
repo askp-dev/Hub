@@ -247,6 +247,31 @@
         }
       },
       "released": "2026-11-21"
+    },
+    {
+      "id": "fbclink",
+      "name": "FBC Link",
+      "badge": "FBC",
+      "tagline": "Companion for FBC collab: the song map and lyrics follow your playhead, takes drag onto tracks, bounces upload as takes.",
+      "version": "0.1.0",
+      "bundles": {
+        "vst3": "FBC Link.vst3",
+        "au": "FBC Link.component",
+        "clap": "FBC Link.clap"
+      },
+      "downloads": {
+        "win": {
+          "url": "https://github.com/askp-dev/hub/releases/download/fbclink-v0.1.0/fbclink-0.1.0-win.zip",
+          "sha256": "cb01c4cac4b1ed6a4817c59891eb1d0fa1f37bc3bb1087f4af58f81231ca1542",
+          "size": 5098344,
+          "formats": [
+            "vst3",
+            "clap"
+          ]
+        }
+      },
+      "released": "2026-11-22",
+      "notes": "0.1.0: first release. Sign in with your FBC account, pick a collab song, follow sections, lyrics and comments with the DAW, download takes and drag them in, drop a bounce on a slot to upload a take."
     }
   ]
 }
