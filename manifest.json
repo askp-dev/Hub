@@ -212,6 +212,31 @@
       },
       "notes": "0.2.0: Shared askp themes: theme menu next to the light/dark button, one choice for all askp plugins. Host parameter text round-trips correctly. First test build. Bundled cab IRs: Brit 4x12 and Rect 4x12 from Jester Dyne Productions (CC0); Thick 2x12: IR: Darwin's Cat, darwinscat.com (CC BY 4.0). Full credits and licences are in the download zip.",
       "released": "2026-11-21"
+    },
+    {
+      "id": "atrium",
+      "name": "Atrium",
+      "badge": "ATR",
+      "tagline": "Draw a room, place every track in it, and walk a listener through it.",
+      "version": "0.1.0",
+      "bundles": {
+        "vst3": "Atrium.vst3",
+        "au": "Atrium.component",
+        "clap": "Atrium.clap"
+      },
+      "notes": "0.1.0: First test build. One plugin, two roles: a Room on a bus (room size, wall materials, listener, reverb tail) and a Source on each track (place it in the room). Sources send Listener Pan / Gain / Tone to the DAW so moving the listener can be recorded as automation. Use the same format (VST3, AU or CLAP) for the Room and its Sources.",
+      "downloads": {
+        "win": {
+          "url": "https://github.com/askp-dev/hub/releases/download/atrium-v0.1.0/atrium-0.1.0-win.zip",
+          "sha256": "28d64e19e3fc67ca018fe66256f771a04901fcaccd6e2c22516b2515900f42af",
+          "size": 3917923,
+          "formats": [
+            "vst3",
+            "clap"
+          ]
+        }
+      },
+      "released": "2026-11-22"
     }
   ]
 }
