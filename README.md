@@ -1,6 +1,6 @@
-# askp Hub
+# fueledby Hub
 
-One app to install, update and remove askp plugins (V/A, V/A Lab, Sector, Sibil, Taste, Grille). Share one
+One app to install, update and remove fueledby plugins (V/A, V/A Lab, Sector, Sibil, Taste, Grille). Share one
 DMG (Mac) or setup EXE (Windows); people pick plugins and formats inside the app.
 
 ![Hub, light](docs/hub-light.png)
@@ -16,9 +16,9 @@ cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES="arm64;
       -DFETCHCONTENT_SOURCE_DIR_JUCE="$PWD/../V-A/build/_deps/juce-src"
 cmake --build build --config Release
 ctest --test-dir build -C Release --output-on-failure
-open "build/Hub_artefacts/Release/askp Hub.app"
+open "build/Hub_artefacts/Release/fueledby Hub.app"
 
-packaging/macos/make-dmg.sh "build/Hub_artefacts/Release/askp Hub.app"   # -> dist/askp-Hub-macOS.dmg
+packaging/macos/make-dmg.sh "build/Hub_artefacts/Release/fueledby Hub.app"   # -> dist/fueledby-Hub-macOS.dmg
 ```
 
 Linux builds too (the cloud checks run there): install the JUCE Linux deps plus libcurl.
@@ -46,27 +46,45 @@ python3 tools/verify-manifest.py --require-platform mac --require-platform win
 Plugin releases must use `gh release create ... --latest=false`. The Hub installers
 use `releases/latest`, so the Hub release must remain marked Latest.
 
-To publish the Hub itself, upload `askp-Hub-macOS.dmg` / `askp-Hub-Windows-Setup.exe` to a
+To publish the Hub itself, upload `fueledby-Hub-macOS.dmg` / `fueledby-Hub-Windows-Setup.exe` to a
 `hub-v<version>` release and bump `hub.version` in `manifest.json`; older Hubs then show a
 download banner.
 
 ## Testing without touching your plug-in folders
 
 ```bash
-ASKP_HUB_ROOT=/tmp/hub-sandbox "build/Hub_artefacts/Release/askp Hub.app/Contents/MacOS/askp Hub" \
+FUELEDBY_HUB_ROOT=/tmp/hub-sandbox "build/Hub_artefacts/Release/fueledby Hub.app/Contents/MacOS/fueledby Hub" \
     --manifest /path/to/test-manifest.json
 ```
 
-`ASKP_HUB_ROOT` puts every plug-in folder and the Hub's data under that folder. `--manifest`
-(or `ASKP_HUB_MANIFEST`) reads another list, local file or URL. `--snapshot out.png [--dark]`
+`FUELEDBY_HUB_ROOT` puts every plug-in folder and the Hub's data under that folder. `--manifest`
+(or `FUELEDBY_HUB_MANIFEST`) reads another list, local file or URL. `--snapshot out.png [--dark]`
 renders the window to a PNG and quits.
 
 ## For testers
 
-**Mac:** open the DMG, drag askp Hub to Applications, double-click it. The first time macOS
+**Mac:** open the DMG, drag fueledby Hub to Applications, double-click it. The first time macOS
 says it can't check the app: press Done, open System Settings > Privacy & Security, scroll
 down and press **Open Anyway**. After that it opens normally. Pick a plugin, press Install,
 then fully quit and reopen your DAW.
 
-**Windows:** run askp-Hub-Windows-Setup.exe. If Windows says it protected your PC, click
-**More info > Run anyway**. Then open askp Hub from the Start menu.
+**Windows:** run fueledby-Hub-Windows-Setup.exe. If Windows says it protected your PC, click
+**More info > Run anyway**. Then open fueledby Hub from the Start menu.
+
+## The askp → fueledby rename (Hub 0.2.1)
+
+The brand is now fueledby (fueledby.cc). What changed and what deliberately didn't:
+
+- **Renamed:** app name (`fueledby Hub`), window and header text, DMG/Setup file names,
+  the Windows plug-in folders (`Common Files\VST3\fueledby`, `CLAP\fueledby`), the Hub's data
+  folder (`fueledby Hub`), the shared look folder (`fueledby/Look.settings`, `Themes/*.fueledbytheme`),
+  built-in theme ids (`fueledby.studio` ...), and env overrides (`FUELEDBY_HUB_ROOT`, `FUELEDBY_HUB_MANIFEST`,
+  `FUELEDBY_LOOK_DIR`, `FUELEDBY_THEME`).
+- **Moved automatically:** on first launch the Hub moves its old `askp Hub` data folder and, on
+  Windows, any plugins in the old `askp` folders. The look engine copies the old `askp/Look.settings`
+  and Themes once. Old `askp.*` theme ids, `.askptheme` files and `ASKP_*` overrides still work.
+- **Kept on purpose:** the Mac bundle id `com.askp.hub` (macOS keeps the app's settings and
+  permissions), the Windows Setup AppId (the new Setup replaces the old Hub), and the GitHub
+  URLs under `askp-dev` (the manifest URL is built into every installed Hub).
+- **When publishing 0.2.1:** the release assets are now `fueledby-Hub-macOS.dmg` and
+  `fueledby-Hub-Windows-Setup.exe`, so update `hub.download` in `manifest.json` in the same change.

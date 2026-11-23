@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(Hub VERSION 0.2.0 LANGUAGES C CXX)
+project(Hub VERSION 0.2.1 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -18,7 +18,7 @@ FetchContent_Declare(JUCE
     GIT_SHALLOW ON)
 FetchContent_MakeAvailable(JUCE)
 include(cmake/JuceImeFix.cmake)
-askp_patch_juce_ime("${juce_SOURCE_DIR}")
+fueledby_patch_juce_ime("${juce_SOURCE_DIR}")
 
 set(HUB_DEFS
     HUB_VERSION="${PROJECT_VERSION}"
@@ -37,13 +37,14 @@ set_target_properties(hub_core PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 # --- the app ---
 juce_add_gui_app(Hub
-    PRODUCT_NAME "askp Hub"
-    COMPANY_NAME "askp"
-    BUNDLE_ID com.askp.hub
+    PRODUCT_NAME "fueledby Hub"
+    COMPANY_NAME "fueledby"
+    COMPANY_WEBSITE "https://fueledby.cc"
+    BUNDLE_ID com.askp.hub   # pre-rebrand id, kept so macOS keeps its settings and permissions
     ICON_BIG "${CMAKE_CURRENT_SOURCE_DIR}/packaging/icon.png"
     NEEDS_CURL TRUE
     NEEDS_WEB_BROWSER FALSE)
-target_sources(Hub PRIVATE Source/app/Main.cpp Source/app/HubComponent.cpp Source/app/look/AskpFonts.cpp)
+target_sources(Hub PRIVATE Source/app/Main.cpp Source/app/HubComponent.cpp Source/app/look/FueledbyFonts.cpp)
 target_compile_definitions(Hub PRIVATE JUCE_MODAL_LOOPS_PERMITTED=1)   # headless --install check
 target_link_libraries(Hub PRIVATE hub_core juce::juce_gui_basics
                       PUBLIC juce::juce_recommended_config_flags juce::juce_recommended_warning_flags)

@@ -159,6 +159,28 @@ int main() {
     auto none = v1; none.downloads.clear();
     CHECK(inst.install(none, all).contains("isn't available"));
 
+    // Rebrand: data and plugins in the old askp folders move to the new ones, once.
+    {
+        const auto r2 = root.getChildFile("rebrand");
+        Paths p = Paths::sandbox(r2);
+        const auto write = [](const juce::File& f, const char* text) { f.getParentDirectory().createDirectory(); f.replaceWithText(text); };
+        p.legacyDataDir = r2.getChildFile("askp Hub");
+        write(p.legacyDataDir.getChildFile("installed.json"), R"({"plugins":{"demo":{"version":"1.0.0"}}})");
+        p.legacyPluginDirs[Format::vst3] = r2.getChildFile("OldVST3");
+        write(p.legacyPluginDirs[Format::vst3].getChildFile("Demo.vst3/Contents/x"), "old");
+        write(p.legacyPluginDirs[Format::vst3].getChildFile("Other.vst3/Contents/x"), "old");
+        write(p.pluginDirs[Format::vst3].getChildFile("Other.vst3/Contents/x"), "new");   // already moved
+        Installer mig(p);
+        mig.migrateLegacy();
+        CHECK(p.dataDir.getChildFile("installed.json").existsAsFile() && ! p.legacyDataDir.exists());
+        CHECK(p.pluginDirs[Format::vst3].getChildFile("Demo.vst3/Contents/x").loadFileAsString() == "old");
+        CHECK(p.pluginDirs[Format::vst3].getChildFile("Other.vst3/Contents/x").loadFileAsString() == "new");
+        CHECK(! p.legacyPluginDirs[Format::vst3].exists());
+        CHECK(mig.status(v1).managed);
+        mig.migrateLegacy();   // nothing left to do
+        CHECK(p.dataDir.getChildFile("installed.json").existsAsFile());
+    }
+
     root.deleteRecursively();
     std::cout << (failures == 0 ? "hub_tests: all passed\n" : "hub_tests: FAILED\n");
     return failures == 0 ? 0 : 1;

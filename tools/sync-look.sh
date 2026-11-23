@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copies the canonical askp look (shared/look/) into a product, so every askp plugin and the Hub
+# Copies the canonical fueledby look (shared/look/) into a product, so every fueledby plugin and the Hub
 # draw with the same code and read the same theme setting.
 #
 #   tools/sync-look.sh <dest>          e.g. tools/sync-look.sh ../V-A/Source/plugin
@@ -14,7 +14,7 @@ check=0
 if [ "${1:-}" = "--check" ]; then check=1; shift; fi
 dest="${1:?usage: sync-look.sh [--check] <folder with StudioLook.h>}"
 [ -f "$dest/StudioLook.h" ] || { echo "no StudioLook.h in $dest" >&2; exit 2; }
-for f in AskpLook.h AskpFonts.cpp Inter-LICENSE.txt; do
+for f in FueledbyLook.h FueledbyFonts.cpp Inter-LICENSE.txt; do
     if [ $check = 1 ]; then
         cmp -s "$src/$f" "$dest/look/$f" || { echo "out of date: $dest/look/$f" >&2; exit 1; }
     else

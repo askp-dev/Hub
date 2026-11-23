@@ -1,7 +1,7 @@
-# askp Hub: design
+# fueledby Hub: design
 
 One small app that people download once (a DMG on Mac, a setup EXE on Windows). It lists
-every askp plugin, installs the ones they pick, tells them when an update is out, and
+every fueledby plugin, installs the ones they pick, tells them when an update is out, and
 removes plugins cleanly. Same idea as Arturia Software Center or Native Access, minus
 accounts and licences for now.
 
@@ -14,7 +14,7 @@ accounts and licences for now.
      ├── va-0.2.0-mac.zip     VST3/VA.vst3 + AU/VA.component + CLAP/VA.clap
      └── va-0.2.0-win.zip     VST3/VA.vst3 + CLAP/VA.clap
 
- askp Hub app ──GET──> raw.githubusercontent.com/askp-dev/hub/main/manifest.json
+ fueledby Hub app ──GET──> raw.githubusercontent.com/askp-dev/hub/main/manifest.json
               ──GET──> github.com/askp-dev/hub/releases/download/<tag>/<zip>
 ```
 
@@ -71,13 +71,13 @@ The last good manifest is cached, so the app still shows your plugins offline.
 | | VST3 | AU | CLAP | Admin needed? |
 | --- | --- | --- | --- | --- |
 | Mac | `~/Library/Audio/Plug-Ins/VST3` | `~/Library/Audio/Plug-Ins/Components` | `~/Library/Audio/Plug-Ins/CLAP` | No |
-| Windows | `C:\Program Files\Common Files\VST3\askp` | | `C:\Program Files\Common Files\CLAP\askp` | Only for the one-time Hub setup |
+| Windows | `C:\Program Files\Common Files\VST3\fueledby` | | `C:\Program Files\Common Files\CLAP\fueledby` | Only for the one-time Hub setup |
 
 * Mac uses the per-user folders: no password prompts, and FL Studio, Ableton, Logic,
   Reaper and Bitwig all scan them. (Arturia and NI install to `/Library` with a privileged
   helper; that's only worth it if we need all-users installs.)
 * Windows uses the standard shared folders, which need admin to write. The Hub's setup EXE
-  runs once as admin and creates an `askp` subfolder in each that normal users can write
+  runs once as admin and creates a `fueledby` subfolder in each that normal users can write
   to (`packaging/windows/hub.iss`), so the Hub never asks for admin again. Every Windows DAW
   scans subfolders of the VST3 folder.
 
@@ -124,7 +124,7 @@ Plugins installed by the Hub load without any prompt, because the Hub writes the
 * A code-signing certificate. Cheapest current route is **Azure Trusted Signing**
   (about 10 USD a month, individuals in the US and Canada qualify). A classic OV
   certificate from a CA is about 200 to 400 USD a year and now needs a hardware token.
-* Sign the setup EXE and `askp Hub.exe` (`signtool`). Plugin DLLs can be signed too but
+* Sign the setup EXE and `fueledby Hub.exe` (`signtool`). Plugin DLLs can be signed too but
   hosts don't require it.
 
 Until then, testers see "Windows protected your PC" on the setup EXE: click **More info >

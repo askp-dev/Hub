@@ -28,15 +28,15 @@ jobs:
       - name: Snapshot (checks the app starts and draws)
         shell: pwsh
         run: |
-          $env:ASKP_HUB_ROOT = "$env:RUNNER_TEMP\hub-root"
-          $p = Start-Process -FilePath "build\Hub_artefacts\Release\askp Hub.exe" `
+          $env:FUELEDBY_HUB_ROOT = "$env:RUNNER_TEMP\hub-root"
+          $p = Start-Process -FilePath "build\Hub_artefacts\Release\fueledby Hub.exe" `
                -ArgumentList '--manifest','manifest.json','--snapshot','dist\hub-windows.png' -PassThru -Wait
           "exit code: $($p.ExitCode)"
           if (-not (Test-Path dist\hub-windows.png)) { Write-Warning "no snapshot written" }
       - uses: actions/upload-artifact@v4
         with:
-          name: askp-Hub-Windows
+          name: fueledby-Hub-Windows
           path: |
-            dist/askp-Hub-Windows-Setup.exe
+            dist/fueledby-Hub-Windows-Setup.exe
             dist/hub-windows.png
           if-no-files-found: warn

@@ -234,6 +234,7 @@ void PluginCard::resized() {
 
 HubComponent::HubComponent(juce::String manifestSource, bool syncLoad)
     : installer(Paths::defaults()), source(std::move(manifestSource)) {
+    installer.migrateLegacy();   // pre-rebrand askp folders -> fueledby
     setLookAndFeel(&look);
     theme.onClick = [this] { saveThemePreference(! darkTheme()); themeFollow.check(); };
     themeMenu.onThemeChanged = [this] { themeFollow.check(); };
@@ -280,7 +281,7 @@ juce::String HubComponent::fetch(const juce::String& src, juce::String& error) {
     auto url = juce::URL(src).withParameter("t", juce::String(juce::Time::currentTimeMillis() / 60000));
     auto in = url.createInputStream(juce::URL::InputStreamOptions(juce::URL::ParameterHandling::inAddress)
                                         .withConnectionTimeoutMs(15000).withNumRedirectsToFollow(5).withStatusCode(&code)
-                                        .withExtraHeaders("User-Agent: askp-hub\r\nCache-Control: no-cache\r\n"));
+                                        .withExtraHeaders("User-Agent: fueledby-hub\r\nCache-Control: no-cache\r\n"));
     if (in == nullptr || code >= 400) {
         error = "Couldn't check for updates" + (code >= 400 ? " (HTTP " + juce::String(code) + ")" : juce::String(", you look offline"));
         return {};
@@ -381,7 +382,7 @@ void HubComponent::paint(juce::Graphics& g) {
     header.removeFromLeft(14.0f);
     g.setColour(colours::ink);
     g.setFont(bodyFont(18.0f, true));
-    g.drawText("askp Hub", header.removeFromTop(22.0f), juce::Justification::bottomLeft);
+    g.drawText("fueledby Hub", header.removeFromTop(22.0f), juce::Justification::bottomLeft);
     g.setColour(colours::muted);
     g.setFont(labelFont(9.5f));
     juce::String sub = loading ? "Checking for updates" : (manifest ? juce::String(manifest->plugins.size()) + " plugins" : juce::String("No plugin list yet"));

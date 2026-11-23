@@ -12,10 +12,14 @@ struct Paths {
     juce::File dataDir;                          // state file, download cache, staging
     std::map<Format, juce::File> pluginDirs;     // where the Hub installs each format
     std::map<Format, juce::File> systemDirs;     // other places a copy may already live (read only)
+    // Pre-rebrand ("askp") locations that migrateLegacy() moves into the ones above.
+    juce::File legacyDataDir;
+    std::map<Format, juce::File> legacyPluginDirs;
 
-    // The real locations for this computer. ASKP_HUB_ROOT=<folder> swaps all of
-    // them for folders under <folder>, for tests and dry runs.
+    // The real locations for this computer. FUELEDBY_HUB_ROOT=<folder> (or the old ASKP_HUB_ROOT)
+    // swaps all of them for folders under <folder>, for tests and dry runs.
     static Paths defaults();
+    static juce::String env(const char* name);   // FUELEDBY_<name>, else ASKP_<name>
     static Paths sandbox(const juce::File& root);
 };
 
@@ -35,6 +39,9 @@ public:
     explicit Installer(Paths p) : paths(std::move(p)) {}
 
     const Paths& getPaths() const { return paths; }
+
+    // Moves the Hub's data and any plugins from the pre-rebrand askp folders. Safe to call every launch.
+    void migrateLegacy() const;
 
     InstallStatus status(const PluginInfo&) const;
 

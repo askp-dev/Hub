@@ -1,6 +1,6 @@
-# askp look and themes
+# fueledby look and themes
 
-`AskpLook.h` is the one look every askp product draws with: the "Studio" LookAndFeel, the colour
+`FueledbyLook.h` is the one look every fueledby product draws with: the "Studio" LookAndFeel, the colour
 tokens, and the theme engine. This folder is the canonical copy. Each product carries a copy in
 `<source dir>/look/`, included through its own `StudioLook.h` wrapper:
 
@@ -11,7 +11,7 @@ tokens, and the theme engine. This folder is the canonical copy. Each product ca
 | Sibil | `Source/plugin/StudioLook.h` | `sib::ui` |
 | Grille | `Source/plugin/StudioLook.h` | `grl::ui` |
 | Taste | `Source/plugin/StudioLook.h` | `taste::ui` |
-| askp Hub | `Source/app/StudioLook.h` | `hub::ui` |
+| fueledby Hub | `Source/app/StudioLook.h` | `hub::ui` |
 
 Change the look here, then copy it into each product and rebuild:
 
@@ -20,9 +20,9 @@ tools/sync-look.sh ../V-A/Source/plugin
 tools/sync-look.sh --check ../V-A/Source/plugin   # is that copy current?
 ```
 
-Each product also compiles `look/AskpFonts.cpp` (Inter, embedded).
+Each product also compiles `look/FueledbyFonts.cpp` (Inter, embedded).
 
-## Theme files (`.askptheme`)
+## Theme files (`.fueledbytheme`)
 
 JSON, at most 16 KB, data only. Unknown keys are ignored and numbers are clamped, so older
 plugins can open newer files.
@@ -42,7 +42,7 @@ plugins can open newer files.
 }
 ```
 
-- `id`: `author.name`, lower case `a-z 0-9 . _ -`. Ids starting `askp.` are reserved for built-ins.
+- `id`: `author.name`, lower case `a-z 0-9 . _ -`. Ids starting `fueledby.` are reserved for built-ins.
 - `light` / `dark`: one or both. With both, the plugins' light/dark button switches between them.
   Tokens: `bg footer panel surface line grid track tick rim ink muted ghost onInk mute solo alert
   accent` as `#RRGGBB`, plus `shadow` (0 to 0.6). A missing token falls back to Studio's value
@@ -55,19 +55,19 @@ Built-in themes: Studio, Paper, Graphite, Moss and Console (dark only).
 
 ## Where the choice lives
 
-One user-level setting shared by every askp plugin and the Hub, never saved in a DAW project:
+One user-level setting shared by every fueledby plugin and the Hub, never saved in a DAW project:
 
 | | Choice | Installed themes |
 | --- | --- | --- |
-| macOS | `~/Library/Application Support/askp/Look.settings` | `.../askp/Themes/*.askptheme` |
-| Windows | `%APPDATA%\askp\Look.settings` | `%APPDATA%\askp\Themes\*.askptheme` |
+| macOS | `~/Library/Application Support/fueledby/Look.settings` | `.../fueledby/Themes/*.fueledbytheme` |
+| Windows | `%APPDATA%\fueledby\Look.settings` | `%APPDATA%\fueledby\Themes\*.fueledbytheme` |
 
 `Look.settings` is `{"theme": id, "dark": bool, "counter": n}`. Each open window has a
 `ThemeFollower` that checks the file's timestamp about once a second and repaints when it
 changes, so a theme chosen in one plugin (or the Hub) shows everywhere. On first run a product
 copies its old per-plugin `darkMode` preference into the shared file.
 
-Overrides for tests and snapshots: `ASKP_LOOK_DIR` (use another folder), `ASKP_THEME` (show a
+Overrides for tests and snapshots: `FUELEDBY_LOOK_DIR` (use another folder), `FUELEDBY_THEME` (show a
 theme id without saving).
 
 ## Tests
@@ -77,4 +77,4 @@ migration, persistence, live reload and user theme files. Run it under `xvfb-run
 path to also render every built-in theme to a PNG.
 
 Inter: SIL Open Font License 1.1, see `Inter-LICENSE.txt`. `tools/embed_fonts.py` rebuilds
-`AskpFonts.cpp` from the TTFs.
+`FueledbyFonts.cpp` from the TTFs.

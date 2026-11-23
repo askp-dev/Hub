@@ -1,4 +1,4 @@
-// Tests for the askp theme engine + a render of every built-in theme (look-*.png).
+// Tests for the fueledby theme engine + a render of every built-in theme (look-*.png).
 #include "StudioLook.h"
 using namespace lt::ui;
 
@@ -60,12 +60,12 @@ static void renderDemo(const juce::File& out) {
 
 int main(int argc, char** argv) {
     juce::ScopedJuceInitialiser_GUI gui;
-    const auto dir = juce::File::getSpecialLocation(juce::File::tempDirectory).getChildFile("askp-look-test");
+    const auto dir = juce::File::getSpecialLocation(juce::File::tempDirectory).getChildFile("fueledby-look-test");
     dir.deleteRecursively(); dir.createDirectory();
    #if JUCE_WINDOWS
-    _putenv_s("ASKP_LOOK_DIR", dir.getFullPathName().toRawUTF8());
+    _putenv_s("FUELEDBY_LOOK_DIR", dir.getFullPathName().toRawUTF8());
    #else
-    setenv("ASKP_LOOK_DIR", dir.getFullPathName().toRawUTF8(), 1);
+    setenv("FUELEDBY_LOOK_DIR", dir.getFullPathName().toRawUTF8(), 1);
    #endif
 
     // 1. built-ins: round trip + contrast
@@ -104,48 +104,65 @@ int main(int argc, char** argv) {
         ensureLookLoaded();
         CHECK(darkTheme());
         CHECK(lookSettingsFile().existsAsFile());
-        CHECK(activeTheme().id == "askp.studio");
+        CHECK(activeTheme().id == "fueledby.studio");
         CHECK(colours::bg == juce::Colour(0xff1b1c1e));
         legacy.deleteFile();
     }
     // 4. selecting persists; a fresh load (another plugin, next session) sees it
-    selectTheme("askp.graphite");
+    selectTheme("fueledby.graphite");
     CHECK(colours::accent == juce::Colour(0xff5b95f5));   // dark graphite
     resetState(); ensureLookLoaded();
-    CHECK(activeTheme().id == "askp.graphite" && darkTheme());
+    CHECK(activeTheme().id == "fueledby.graphite" && darkTheme());
 
     // 5. another process changes the file -> poll picks it up
     {
         const int gen = themeGeneration();
         juce::Thread::sleep(1100);   // file times can be 1 s resolution
-        lookSettingsFile().replaceWithText(R"({"theme":"askp.paper","dark":false,"counter":99})");
+        lookSettingsFile().replaceWithText(R"({"theme":"fueledby.paper","dark":false,"counter":99})");
         lookState().lastPollMs = 0;
         pollThemeFile();
-        CHECK(activeTheme().id == "askp.paper" && ! darkTheme() && themeGeneration() > gen);
+        CHECK(activeTheme().id == "fueledby.paper" && ! darkTheme() && themeGeneration() > gen);
         CHECK(colours::accent == juce::Colour(0xffb5532a));
     }
-    // 6. user themes in the Themes folder; askp.* ids and duplicates ignored; bad files skipped
+    // 6. user themes in the Themes folder; fueledby.* ids and duplicates ignored; bad files skipped
     {
         themesFolder().createDirectory();
-        themesFolder().getChildFile("mine.askptheme").replaceWithText(R"({"format":1,"id":"me.mine","name":"Mine","dark":{"bg":"#101010","ink":"#F0F0F0"}})");
-        themesFolder().getChildFile("fake.askptheme").replaceWithText(R"({"format":1,"id":"askp.studio","name":"Fake","light":{"ink":"#FF0000"}})");
-        themesFolder().getChildFile("zz-dupe.askptheme").replaceWithText(R"({"format":1,"id":"me.mine","name":"Dupe","light":{"ink":"#FF0000"}})");
-        themesFolder().getChildFile("broken.askptheme").replaceWithText("{");
+        themesFolder().getChildFile("mine.fueledbytheme").replaceWithText(R"({"format":1,"id":"me.mine","name":"Mine","dark":{"bg":"#101010","ink":"#F0F0F0"}})");
+        themesFolder().getChildFile("fake.fueledbytheme").replaceWithText(R"({"format":1,"id":"fueledby.studio","name":"Fake","light":{"ink":"#FF0000"}})");
+        themesFolder().getChildFile("zz-dupe.fueledbytheme").replaceWithText(R"({"format":1,"id":"me.mine","name":"Dupe","light":{"ink":"#FF0000"}})");
+        themesFolder().getChildFile("broken.fueledbytheme").replaceWithText("{");
         scanThemes();
         int mine = 0; for (auto& t : themes()) if (t.id == "me.mine") ++mine;
         CHECK(mine == 1);
-        CHECK(findTheme("askp.studio")->name == "Studio");
+        CHECK(findTheme("fueledby.studio")->name == "Studio");
         selectTheme("me.mine");
         CHECK(! activeThemeHasBothModes());
         CHECK(colours::bg == juce::Colour(0xff101010) && colours::panel == juce::Colour(0xff25262a));   // missing -> Studio dark
         CHECK(colours::accent == colours::ink);
         // theme file deleted -> falls back to Studio on next poll
-        themesFolder().getChildFile("mine.askptheme").deleteFile(); themesFolder().getChildFile("zz-dupe.askptheme").deleteFile();
+        themesFolder().getChildFile("mine.fueledbytheme").deleteFile(); themesFolder().getChildFile("zz-dupe.fueledbytheme").deleteFile();
         juce::Thread::sleep(1100);
         themesFolder().getChildFile("touch.tmp").create(); themesFolder().getChildFile("touch.tmp").deleteFile();
         lookState().lastPollMs = 0; lookState().folderStamp = {};
         pollThemeFile();
-        CHECK(activeTheme().id == "askp.studio");
+        CHECK(activeTheme().id == "fueledby.studio");
+    }
+    // 6b. pre-rebrand names: an askp.* id in the settings file, a .askptheme user theme
+    {
+        juce::Thread::sleep(1100);
+        lookSettingsFile().replaceWithText(R"({"theme":"askp.moss","dark":true,"counter":120})");
+        lookState().lastPollMs = 0;
+        pollThemeFile();
+        CHECK(activeTheme().id == "fueledby.moss" && darkTheme());
+        CHECK(canonicalThemeId("askp.console") == "fueledby.console" && canonicalThemeId("me.mine") == "me.mine");
+        themesFolder().getChildFile("old.askptheme").replaceWithText(R"({"format":1,"id":"me.old","name":"Old","dark":{"bg":"#202020"}})");
+        themesFolder().getChildFile("oldfake.askptheme").replaceWithText(R"({"format":1,"id":"askp.paper","name":"Fake","light":{"ink":"#FF0000"}})");
+        scanThemes();
+        CHECK(findTheme("me.old") != nullptr && findTheme("askp.paper") == nullptr);
+        selectTheme("askp.graphite");
+        CHECK(activeTheme().id == "fueledby.graphite");
+        themesFolder().getChildFile("old.askptheme").deleteFile(); themesFolder().getChildFile("oldfake.askptheme").deleteFile();
+        selectTheme("fueledby.studio");
     }
     // 7. fonts load
     CHECK(fonts::Inter::getInstance() != nullptr && fonts::Inter::getInstance()->regular != nullptr);

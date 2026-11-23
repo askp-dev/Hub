@@ -22,8 +22,14 @@ bool moveItem(const juce::File& from, const juce::File& to) {
 }
 } // namespace
 
+juce::String Paths::env(const char* name) {
+    // Current name first, then the pre-rebrand ASKP_* one.
+    auto v = juce::SystemStats::getEnvironmentVariable(juce::String("FUELEDBY_") + name, {});
+    return v.isNotEmpty() ? v : juce::SystemStats::getEnvironmentVariable(juce::String("ASKP_") + name, {});
+}
+
 Paths Paths::defaults() {
-    if (const auto root = juce::SystemStats::getEnvironmentVariable("ASKP_HUB_ROOT", {}); root.isNotEmpty())
+    if (const auto root = env("HUB_ROOT"); root.isNotEmpty())
         return sandbox(juce::File(root));
     Paths p;
    #if JUCE_MAC
@@ -36,19 +42,28 @@ Paths Paths::defaults() {
     p.systemDirs = { { Format::vst3, sys.getChildFile("VST3") },
                      { Format::au, sys.getChildFile("Components") },
                      { Format::clap, sys.getChildFile("CLAP") } };
-    p.dataDir = home().getChildFile("Library/Application Support/askp Hub");
+    p.dataDir = home().getChildFile("Library/Application Support/fueledby Hub");
+    p.legacyDataDir = home().getChildFile("Library/Application Support/askp Hub");
    #elif JUCE_WINDOWS
-    // An "askp" folder inside the standard shared folders. Hosts scan them recursively.
+    // A "fueledby" folder inside the standard shared folders. Hosts scan them recursively.
     // The Hub's setup (run once as administrator) creates these two folders and lets
     // users write to them, so the Hub itself never needs admin rights (packaging/windows/hub.iss).
     const juce::File common(juce::SystemStats::getEnvironmentVariable("CommonProgramFiles", "C:\\Program Files\\Common Files"));
-    p.pluginDirs = { { Format::vst3, common.getChildFile("VST3").getChildFile("askp") },
-                     { Format::clap, common.getChildFile("CLAP").getChildFile("askp") } };
+    p.pluginDirs = { { Format::vst3, common.getChildFile("VST3").getChildFile("fueledby") },
+                     { Format::clap, common.getChildFile("CLAP").getChildFile("fueledby") } };
     p.systemDirs = { { Format::vst3, common.getChildFile("VST3") }, { Format::clap, common.getChildFile("CLAP") } };
-    p.dataDir = juce::File::getSpecialLocation(juce::File::userApplicationDataDirectory).getChildFile("askp Hub");
+    p.dataDir = juce::File::getSpecialLocation(juce::File::userApplicationDataDirectory).getChildFile("fueledby Hub");
+    // Before the rebrand these were "askp" folders. Only the Setup can make a folder here that users
+    // may write to, so if this Hub runs before the new Setup has made the fueledby ones, stay put.
+    p.legacyPluginDirs = { { Format::vst3, common.getChildFile("VST3").getChildFile("askp") },
+                           { Format::clap, common.getChildFile("CLAP").getChildFile("askp") } };
+    for (auto& [format, dir] : p.pluginDirs)
+        if (! dir.isDirectory() && p.legacyPluginDirs[format].isDirectory()) dir = p.legacyPluginDirs[format];
+    p.legacyDataDir = juce::File::getSpecialLocation(juce::File::userApplicationDataDirectory).getChildFile("askp Hub");
    #else
     p.pluginDirs = { { Format::vst3, home().getChildFile(".vst3") }, { Format::clap, home().getChildFile(".clap") } };
-    p.dataDir = home().getChildFile(".config/askp Hub");
+    p.dataDir = home().getChildFile(".config/fueledby Hub");
+    p.legacyDataDir = home().getChildFile(".config/askp Hub");
    #endif
     return p;
 }
@@ -64,6 +79,29 @@ Paths Paths::sandbox(const juce::File& root) {
                      { Format::clap, sys.getChildFile("CLAP") } };
     p.dataDir = root.getChildFile("Data");
     return p;
+}
+
+// ---------------------------------------------------------------- rebrand
+
+void Installer::migrateLegacy() const {
+    // The Hub's own folder (installed.json, cached manifest): move it if the new one isn't there yet.
+    if (paths.legacyDataDir != juce::File() && paths.legacyDataDir.isDirectory() && ! paths.dataDir.exists()) {
+        paths.dataDir.getParentDirectory().createDirectory();
+        moveItem(paths.legacyDataDir, paths.dataDir);
+    }
+    // Plugins in the old askp folders (Windows): move each bundle into the new folder, then drop the
+    // old folder if it is empty. A bundle a DAW has open can't move; it's tried again next launch.
+    for (const auto& [format, legacy] : paths.legacyPluginDirs) {
+        const auto it = paths.pluginDirs.find(format);
+        if (it == paths.pluginDirs.end() || it->second == legacy || ! legacy.isDirectory() || ! it->second.isDirectory())
+            continue;
+        for (const auto& item : legacy.findChildFiles(juce::File::findFilesAndDirectories, false)) {
+            const auto dest = it->second.getChildFile(item.getFileName());
+            if (dest.exists()) removeItem(item);      // the newer copy is already in place
+            else moveItem(item, dest);
+        }
+        if (legacy.getNumberOfChildFiles(juce::File::findFilesAndDirectories) == 0) legacy.deleteFile();
+    }
 }
 
 // ---------------------------------------------------------------- state
@@ -143,7 +181,7 @@ juce::String Installer::download(const Download& dl, const juce::File& dest, con
                                        .withConnectionTimeoutMs(20000)
                                        .withNumRedirectsToFollow(10)   // GitHub release links redirect to a CDN
                                        .withStatusCode(&statusCode)
-                                       .withExtraHeaders("User-Agent: askp-hub\r\n"));
+                                       .withExtraHeaders("User-Agent: fueledby-hub\r\n"));
     if (in == nullptr || statusCode >= 400)
         return "Couldn't reach the download" + (statusCode >= 400 ? " (HTTP " + juce::String(statusCode) + ")" : juce::String())
                + ". Check your internet connection and try again.";

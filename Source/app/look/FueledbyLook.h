@@ -1,34 +1,34 @@
 #pragma once
-// askp shared look: the "Studio" LookAndFeel plus the theme engine used by every askp plugin and
-// the askp Hub. CANONICAL COPY lives in the askp-dev/hub repo at shared/look/; plugins carry a copy
+// fueledby shared look: the "Studio" LookAndFeel plus the theme engine used by every fueledby plugin and
+// the fueledby Hub. CANONICAL COPY lives in the askp-dev/hub repo at shared/look/; plugins carry a copy
 // made by tools/sync-look.sh. Edit it there, then sync, so the copies never drift.
 //
 // Each product includes it through its own StudioLook.h, which first defines
-//   ASKP_LOOK_NS             the namespace to put everything in (e.g. va::ui)
-//   ASKP_LOOK_LEGACY_FOLDER  the folder the old per-plugin dark-mode setting lived in (e.g. "V-A")
+//   FUELEDBY_LOOK_NS             the namespace to put everything in (e.g. va::ui)
+//   FUELEDBY_LOOK_LEGACY_FOLDER  the folder the old per-plugin dark-mode setting lived in (e.g. "V-A")
 //
 // Themes
-//   A theme is a small JSON file (.askptheme): colours for a light and/or dark palette, knob and
+//   A theme is a small JSON file (.fueledbytheme): colours for a light and/or dark palette, knob and
 //   fader style, corner size, line weight and a font family. The chosen theme and light/dark mode
-//   are one user-level setting shared by every askp plugin and the Hub:
-//     macOS    ~/Library/Application Support/askp/Look.settings   (+ Themes/*.askptheme)
-//     Windows  %APPDATA%\askp\Look.settings                         (+ Themes\*.askptheme)
+//   are one user-level setting shared by every fueledby plugin and the Hub:
+//     macOS    ~/Library/Application Support/fueledby/Look.settings   (+ Themes/*.fueledbytheme)
+//     Windows  %APPDATA%\fueledby\Look.settings                         (+ Themes\*.fueledbytheme)
 //   Open windows pick up a change made anywhere (another plugin, the Hub) within about a second:
 //   each editor owns a ThemeFollower that polls the settings file's timestamp on the message thread.
-//   Test/snapshot overrides: ASKP_LOOK_DIR (folder), ASKP_THEME (theme id, not saved).
+//   Test/snapshot overrides: FUELEDBY_LOOK_DIR (folder), FUELEDBY_THEME (theme id, not saved).
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include <array>
 #include <optional>
 
-#ifndef ASKP_LOOK_NS
- #error "Define ASKP_LOOK_NS (e.g. va::ui) before including AskpLook.h"
+#ifndef FUELEDBY_LOOK_NS
+ #error "Define FUELEDBY_LOOK_NS (e.g. va::ui) before including FueledbyLook.h"
 #endif
-#ifndef ASKP_LOOK_LEGACY_FOLDER
- #define ASKP_LOOK_LEGACY_FOLDER ""
+#ifndef FUELEDBY_LOOK_LEGACY_FOLDER
+ #define FUELEDBY_LOOK_LEGACY_FOLDER ""
 #endif
 
-namespace ASKP_LOOK_NS {
+namespace FUELEDBY_LOOK_NS {
 
 // Colours are tokens, not literals: applyTheme() swaps the whole palette and every paint() reads
 // the current value. "white" is the colour that sits on ink (knob caps, text on a filled button),
@@ -218,7 +218,7 @@ inline double contrast(juce::Colour a, juce::Colour b) {
 }
 
 //==============================================================================
-// Built-in themes (compiled in, so a plugin always draws even with no askp folder)
+// Built-in themes (compiled in, so a plugin always draws even with no fueledby folder)
 inline Palette makePalette(std::initializer_list<juce::uint32> argb, float shadow) {
     Palette p;
     int i = 0;
@@ -235,24 +235,24 @@ inline std::vector<Theme> builtIns() {
     std::vector<Theme> v;
     auto add = [&](const char* id, const char* name, std::optional<Palette> l, std::optional<Palette> d,
                    KnobStyle k, FaderStyle f, float corner, float line, FontFamily fam) {
-        Theme t; t.id = id; t.name = name; t.author = "askp"; t.license = "CC0-1.0"; t.builtIn = true;
+        Theme t; t.id = id; t.name = name; t.author = "fueledby"; t.license = "CC0-1.0"; t.builtIn = true;
         t.light = l; t.dark = d; t.shape = { k, f, corner, line }; t.font = { fam, 1.0f };
         v.push_back(t);
     };
-    add("askp.studio", "Studio", studioLight(), studioDark(), KnobStyle::arc, FaderStyle::ticks, 7.0f, 1.0f, FontFamily::system);
-    add("askp.paper", "Paper",
+    add("fueledby.studio", "Studio", studioLight(), studioDark(), KnobStyle::arc, FaderStyle::ticks, 7.0f, 1.0f, FontFamily::system);
+    add("fueledby.paper", "Paper",
         makePalette({ 0xffece7df, 0xffe2dcd2, 0xfff7f3ec, 0xfffbf8f3, 0xffddd5c9, 0xffe7e0d5, 0xffe3dcd0, 0xffc7beb0, 0xffd3cabc, 0xff2b2620, 0xff6f665b, 0xff9c9385, 0xfffffdf9, 0xffd9822b, 0xffd8b52a, 0xffd4473a, 0xffb5532a }, 0.07f),
         makePalette({ 0xff1e1b17, 0xff181512, 0xff28241f, 0xff2e2a24, 0xff3d372f, 0xff332e28, 0xff3e3830, 0xff5a5247, 0xff4d463c, 0xffefe7da, 0xffa69c8e, 0xff776e62, 0xff221e1a, 0xffe0904a, 0xffdcbc45, 0xffe5594b, 0xffe07f4f }, 0.30f),
         KnobStyle::dot, FaderStyle::ticks, 9.0f, 1.0f, FontFamily::inter);
-    add("askp.graphite", "Graphite",
+    add("fueledby.graphite", "Graphite",
         makePalette({ 0xffe6e9ed, 0xffdce0e5, 0xfff3f5f7, 0xfff8f9fb, 0xffd3d8de, 0xffe0e4e9, 0xffdce1e7, 0xffbcc3cc, 0xffcbd1d9, 0xff1a1f26, 0xff626b77, 0xff949ca7, 0xffffffff, 0xffd9822b, 0xffd8b52a, 0xffe0433a, 0xff2f6fdb }, 0.06f),
         makePalette({ 0xff15181d, 0xff101317, 0xff1e2228, 0xff23282f, 0xff323841, 0xff2a2f37, 0xff343a44, 0xff4e5662, 0xff444b56, 0xffe6eaf0, 0xff98a1ad, 0xff69717c, 0xff191c21, 0xffe0904a, 0xffdcbc45, 0xffe5594b, 0xff5b95f5 }, 0.32f),
         KnobStyle::flat, FaderStyle::plain, 5.0f, 1.0f, FontFamily::inter);
-    add("askp.moss", "Moss",
+    add("fueledby.moss", "Moss",
         makePalette({ 0xffe7eae3, 0xffdde1d8, 0xfff4f6f1, 0xfff9faf7, 0xffd5dbce, 0xffe2e6dc, 0xffdde2d6, 0xffbfc7b5, 0xffcdd4c4, 0xff1e241b, 0xff646d5d, 0xff959d8b, 0xffffffff, 0xffd9822b, 0xffd8b52a, 0xffe0433a, 0xff4b8a3c }, 0.06f),
         makePalette({ 0xff171a15, 0xff121410, 0xff20241d, 0xff252a22, 0xff343a2f, 0xff2b3027, 0xff363d31, 0xff505947, 0xff454d3d, 0xffe5ebdf, 0xff9ca592, 0xff6c7464, 0xff1b1e18, 0xffe0904a, 0xffdcbc45, 0xffe5594b, 0xff7cc067 }, 0.30f),
         KnobStyle::cap, FaderStyle::ticks, 8.0f, 1.0f, FontFamily::inter);
-    add("askp.console", "Console", std::nullopt,
+    add("fueledby.console", "Console", std::nullopt,
         makePalette({ 0xff0f0f10, 0xff0a0a0b, 0xff19191b, 0xff1e1e21, 0xff2e2e33, 0xff252529, 0xff2f2f34, 0xff4a4a52, 0xff3e3e45, 0xfff2f2f3, 0xffa0a0a8, 0xff6e6e76, 0xff141416, 0xffe0904a, 0xffdcbc45, 0xffe5594b, 0xfff2a93b }, 0.40f),
         KnobStyle::arc, FaderStyle::plain, 3.0f, 1.25f, FontFamily::inter);
     return v;
@@ -264,10 +264,10 @@ inline std::vector<Theme> builtIns() {
 // Engine state (one per plugin binary; all instances of that plugin share it)
 struct LookState {
     std::vector<theme::Theme> themes;
-    juce::String activeId { "askp.studio" };
+    juce::String activeId { "fueledby.studio" };
     bool dark = false;
     bool loaded = false;
-    bool pinned = false;              // ASKP_THEME / applyTheme(): show this, don't follow the file
+    bool pinned = false;              // FUELEDBY_THEME / applyTheme(): show this, don't follow the file
     int generation = 0;               // bumps on every visible change
     theme::Shape shape;
     theme::FontSpec font;
@@ -278,23 +278,23 @@ struct LookState {
 };
 inline LookState& lookState() { static LookState s; return s; }
 
-inline juce::File askpFolder() {
-    if (auto env = juce::SystemStats::getEnvironmentVariable("ASKP_LOOK_DIR", {}); env.isNotEmpty())
+inline juce::File fueledbyFolder() {
+    if (auto env = juce::SystemStats::getEnvironmentVariable("FUELEDBY_LOOK_DIR", {}); env.isNotEmpty())
         return juce::File(env);
    #if JUCE_MAC
-    return juce::File::getSpecialLocation(juce::File::userApplicationDataDirectory).getChildFile("Application Support/askp");
+    return juce::File::getSpecialLocation(juce::File::userApplicationDataDirectory).getChildFile("Application Support/fueledby");
    #else
-    return juce::File::getSpecialLocation(juce::File::userApplicationDataDirectory).getChildFile("askp");
+    return juce::File::getSpecialLocation(juce::File::userApplicationDataDirectory).getChildFile("fueledby");
    #endif
 }
-inline juce::File lookSettingsFile() { return askpFolder().getChildFile("Look.settings"); }
-inline juce::File themesFolder()     { return askpFolder().getChildFile("Themes"); }
+inline juce::File lookSettingsFile() { return fueledbyFolder().getChildFile("Look.settings"); }
+inline juce::File themesFolder()     { return fueledbyFolder().getChildFile("Themes"); }
 
 // The per-plugin UI preferences (window size etc.), kept next to the presets. Before themes this
 // also held "darkMode"; that value is read once to seed the shared setting.
 inline juce::PropertiesFile::Options uiSettingsOptions() {
     juce::PropertiesFile::Options o;
-    o.applicationName = "UI"; o.filenameSuffix = "settings"; o.folderName = ASKP_LOOK_LEGACY_FOLDER;
+    o.applicationName = "UI"; o.filenameSuffix = "settings"; o.folderName = FUELEDBY_LOOK_LEGACY_FOLDER;
     o.osxLibrarySubFolder = "Application Support";
     return o;
 }
@@ -327,12 +327,12 @@ inline void scanThemes() {
     const auto dir = themesFolder();
     s.folderStamp = dir.getLastModificationTime();
     if (! dir.isDirectory()) return;
-    auto files = dir.findChildFiles(juce::File::findFiles, false, "*.askptheme");
+    auto files = dir.findChildFiles(juce::File::findFiles, false, "*.fueledbytheme");
     files.sort();
     for (auto& f : files) {
         if (f.getSize() > theme::maxFileBytes) continue;
         if (auto t = theme::parse(f.loadFileAsString())) {
-            if (t->id.startsWith("askp.") || findTheme(t->id) != nullptr) continue;   // built-ins and duplicates win
+            if (t->id.startsWith("fueledby.") || findTheme(t->id) != nullptr) continue;   // built-ins and duplicates win
             t->file = f;
             s.themes.push_back(*t);
         }
@@ -381,7 +381,7 @@ inline bool readLookSettings() {
     s.settingsSize = f.getSize();
     const auto v = juce::JSON::parse(f.loadFileAsString());
     if (v.getDynamicObject() == nullptr) return false;
-    const auto id = v.getProperty("theme", "askp.studio").toString();
+    const auto id = v.getProperty("theme", "fueledby.studio").toString();
     const bool dark = (bool) v.getProperty("dark", false);
     const bool changed = id != s.activeId || dark != s.dark;
     s.activeId = id; s.dark = dark;
@@ -396,16 +396,16 @@ inline void ensureLookLoaded() {
     if (lookSettingsFile().existsAsFile()) {
         readLookSettings();
     } else {
-        // First run of a theme-aware askp product: carry over this plugin's old light/dark choice.
+        // First run of a theme-aware fueledby product: carry over this plugin's old light/dark choice.
         const auto legacy = uiSettingsOptions().getDefaultFile();
-        if (juce::String(ASKP_LOOK_LEGACY_FOLDER).isNotEmpty() && legacy.existsAsFile())
+        if (juce::String(FUELEDBY_LOOK_LEGACY_FOLDER).isNotEmpty() && legacy.existsAsFile())
             s.dark = juce::PropertiesFile(legacy, uiSettingsOptions()).getBoolValue("darkMode", false);
         writeLookSettings();
     }
-    if (auto forced = juce::SystemStats::getEnvironmentVariable("ASKP_THEME", {}); forced.isNotEmpty()) {
+    if (auto forced = juce::SystemStats::getEnvironmentVariable("FUELEDBY_THEME", {}); forced.isNotEmpty()) {
         s.activeId = forced; s.pinned = true;
     }
-    if (findTheme(s.activeId) == nullptr) s.activeId = "askp.studio";
+    if (findTheme(s.activeId) == nullptr) s.activeId = "fueledby.studio";
     applyActive();
 }
 
@@ -424,11 +424,11 @@ inline void pollThemeFile() {
     const auto f = lookSettingsFile();
     const bool fileChanged = f.getLastModificationTime() != s.settingsStamp || f.getSize() != s.settingsSize;
     bool changed = fileChanged && readLookSettings();
-    if (findTheme(s.activeId) == nullptr) { s.activeId = "askp.studio"; changed = true; }
+    if (findTheme(s.activeId) == nullptr) { s.activeId = "fueledby.studio"; changed = true; }
     if (changed || rescanned) applyActive();
 }
 
-// Choose a theme everywhere (saved for every askp plugin, instance and project).
+// Choose a theme everywhere (saved for every fueledby plugin, instance and project).
 inline void selectTheme(const juce::String& id) {
     ensureLookLoaded();
     auto& s = lookState();
@@ -463,7 +463,7 @@ inline void previewTheme(const juce::String& id, bool dark) {
 inline void loadThemePreference() { ensureLookLoaded(); }
 
 //==============================================================================
-// Fonts. Inter (SIL Open Font License, Latin subset) is compiled in by look/AskpFonts.cpp.
+// Fonts. Inter (SIL Open Font License, Latin subset) is compiled in by look/FueledbyFonts.cpp.
 namespace fonts {
     extern const unsigned char interRegular[]; extern const int interRegularSize;
     extern const unsigned char interBold[];    extern const int interBoldSize;
@@ -707,7 +707,7 @@ public:
 // filled. Dimmed when the active theme has only one palette, where the flip shows no change.
 class ThemeButton final : public juce::Button {
 public:
-    ThemeButton() : juce::Button("Theme") { setTooltip("Light or dark (saved for every askp plugin)"); }
+    ThemeButton() : juce::Button("Theme") { setTooltip("Light or dark (saved for every fueledby plugin)"); }
     void paintButton(juce::Graphics& g, bool over, bool down) override {
         const bool live = activeThemeHasBothModes();
         auto r = getLocalBounds().toFloat().reduced(0.5f);
@@ -729,7 +729,7 @@ inline void showThemeMenu(juce::Component& target, std::function<void()> afterCh
     ensureLookLoaded();
     scanThemes();                                          // pick up files added since the last poll
     juce::PopupMenu m;
-    m.addSectionHeader("Theme (all askp plugins)");
+    m.addSectionHeader("Theme (all fueledby plugins)");
     const auto& list = themes();
     for (int i = 0; i < (int) list.size(); ++i)
         m.addItem(100 + i, list[(size_t) i].name, true, list[(size_t) i].id == activeTheme().id);
@@ -751,7 +751,7 @@ inline void showThemeMenu(juce::Component& target, std::function<void()> afterCh
 class ThemeMenuButton final : public juce::Button {
 public:
     ThemeMenuButton() : juce::Button("Themes") {
-        setTooltip("Theme for every askp plugin");
+        setTooltip("Theme for every fueledby plugin");
         onClick = [this] { showThemeMenu(*this, onThemeChanged); };
     }
     std::function<void()> onThemeChanged;   // called after a pick, in this window
@@ -798,4 +798,4 @@ private:
     int shown = -1;
 };
 
-} // namespace ASKP_LOOK_NS
+} // namespace FUELEDBY_LOOK_NS
