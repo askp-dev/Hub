@@ -14,7 +14,7 @@
       "name": "V/A",
       "badge": "V/A",
       "tagline": "Analog-style channel strip: up to sixteen slots of Pre, Tape, Comp, Tone, Space, Echo, Drive, Amp, Pitch and more.",
-      "version": "0.6.3",
+      "version": "0.6.4",
       "bundles": {
         "vst3": "VA.vst3",
         "au": "VA.component",
@@ -22,18 +22,18 @@
       },
       "downloads": {
         "win": {
-          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.6.3/va-0.6.3-win.zip",
-          "sha256": "7dc36fa2e9d06fe80c5ec15ff15fbb8ee48107575263f6b7852ebf230d402308",
-          "size": 4893112,
+          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.6.4/va-0.6.4-win.zip",
+          "sha256": "4e430a29e1d356d12ed71070ad2fabf42ab53a4797ee76c05e5ea53c7ad329a6",
+          "size": 4893497,
           "formats": [
             "vst3",
             "clap"
           ]
         },
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.6.3/va-0.6.3-mac.zip",
-          "sha256": "a4db7e2cf9ed7de627d7634999ba4148573f61dba4c316084f6490f885985f44",
-          "size": 12773658,
+          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.6.4/va-0.6.4-mac.zip",
+          "sha256": "4a0e57b5a93c8f7e53919f2e8f40f45a18c083e488f32d7e8d8d51f65e387600",
+          "size": 12773567,
           "formats": [
             "vst3",
             "au",
@@ -42,31 +42,31 @@
         }
       },
       "released": "2026-11-23",
-      "notes": "0.6.3: askp is now fueledby. DAWs list it under fueledby; saved sessions, presets and your theme carry over. 0.6.0: Shared fueledby themes: theme menu next to the light/dark button, one choice for all fueledby plugins. Sibil device shows the standalone's timeline graph and S Balance line. 0.5.1: a Hide graph button folds the graph into a slim bar so the knobs fill the panel (open by default, saved per session). 0.5.0: every control on screen; band EQ is now Tone with Character, Tube and Tilt."
+      "notes": "0.6.4: fixes rare loud clicks in Motion (Chorus, Ensemble, Flanger). 0.6.3: askp is now fueledby. DAWs list it under fueledby; saved sessions, presets and your theme carry over. 0.6.0: Shared fueledby themes: theme menu next to the light/dark button, one choice for all fueledby plugins. Sibil device shows the standalone's timeline graph and S Balance line. 0.5.1: a Hide graph button folds the graph into a slim bar so the knobs fill the panel (open by default, saved per session). 0.5.0: every control on screen; band EQ is now Tone with Character, Tube and Tilt."
     },
     {
       "id": "valab",
       "name": "V/A Lab",
       "badge": "LAB",
       "tagline": "Tester build of V/A with a Tuning panel: adjust every character's numbers by ear and export them.",
-      "version": "0.6.3",
+      "version": "0.6.4",
       "bundles": {
         "vst3": "VA Lab.vst3",
         "au": "VA Lab.component"
       },
       "downloads": {
         "win": {
-          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.6.3/valab-0.6.3-win.zip",
-          "sha256": "dd9a151115cd6675eb84b158fa544fe9873e6945233f2c60c5e2ea174064ce50",
-          "size": 2619530,
+          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.6.4/valab-0.6.4-win.zip",
+          "sha256": "806faf998bf7a417ca4e823839445981ead8cf8ad2b2b1613be8314d5124334b",
+          "size": 2619525,
           "formats": [
             "vst3"
           ]
         },
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.6.3/valab-0.6.3-mac.zip",
-          "sha256": "02fa04479d95d149f057196f1b141a748ca4d59b2667f3a0f7294eda33c88499",
-          "size": 9069684,
+          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.6.4/valab-0.6.4-mac.zip",
+          "sha256": "9bff85cd011bf257f9a35adbc205defb1961eeb0f87423ee89dfcd48a87dc4ff",
+          "size": 9069944,
           "formats": [
             "vst3",
             "au"
@@ -74,7 +74,7 @@
         }
       },
       "released": "2026-11-23",
-      "notes": "0.6.3: askp is now fueledby. DAWs list it under fueledby; saved sessions, presets and your theme carry over. 0.6.0: Shared fueledby themes: theme menu next to the light/dark button, one choice for all fueledby plugins. 0.5.1: built on V/A 0.5.1 (Hide graph button)."
+      "notes": "0.6.4: built on V/A 0.6.4 (Motion click fix). 0.6.3: askp is now fueledby. DAWs list it under fueledby; saved sessions, presets and your theme carry over. 0.6.0: Shared fueledby themes: theme menu next to the light/dark button, one choice for all fueledby plugins. 0.5.1: built on V/A 0.5.1 (Hide graph button)."
     },
     {
       "id": "sector",
