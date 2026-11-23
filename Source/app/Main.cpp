@@ -1,10 +1,10 @@
-// askp Hub: one app to install, update and remove askp plugins.
+// fueledby Hub: one app to install, update and remove fueledby plugins.
 //
 //   Hub                                   normal window
 //   Hub --manifest <url or file>          use another plugin list (testing)
 //   Hub --snapshot out.png [--dark] [--busy <id>] [--install <id>]   render the window to a PNG and quit
 //
-// ASKP_HUB_MANIFEST overrides the list too; ASKP_HUB_ROOT installs into a sandbox folder.
+// FUELEDBY_HUB_MANIFEST overrides the list too; FUELEDBY_HUB_ROOT installs into a sandbox folder.
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "HubComponent.h"
 
@@ -17,14 +17,15 @@ juce::String argAfter(const juce::StringArray& args, const juce::String& flag) {
 
 class HubApp final : public juce::JUCEApplication {
 public:
-    const juce::String getApplicationName() override { return "askp Hub"; }
+    const juce::String getApplicationName() override { return "fueledby Hub"; }
     const juce::String getApplicationVersion() override { return HUB_VERSION; }
     bool moreThanOneInstanceAllowed() override { return false; }
 
     void initialise(const juce::String& commandLine) override {
         const auto args = juce::StringArray::fromTokens(commandLine, true);
         juce::String source = argAfter(args, "--manifest");
-        if (source.isEmpty()) source = juce::SystemStats::getEnvironmentVariable("ASKP_HUB_MANIFEST", HUB_MANIFEST_URL);
+        if (source.isEmpty()) source = hub::Paths::env("HUB_MANIFEST");
+        if (source.isEmpty()) source = HUB_MANIFEST_URL;
         source = source.unquoted();
 
         if (const auto snap = argAfter(args, "--snapshot").unquoted(); snap.isNotEmpty()) {
@@ -60,7 +61,7 @@ private:
     class Window final : public juce::DocumentWindow {
     public:
         explicit Window(const juce::String& source)
-            : DocumentWindow("askp Hub", juce::Colour(0xffececec), DocumentWindow::closeButton | DocumentWindow::minimiseButton) {
+            : DocumentWindow("fueledby Hub", juce::Colour(0xffececec), DocumentWindow::closeButton | DocumentWindow::minimiseButton) {
             setUsingNativeTitleBar(true);
             setContentOwned(new hub::HubComponent(source), true);
             setResizable(true, false);

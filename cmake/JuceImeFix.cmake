@@ -5,10 +5,10 @@
 # 038b0d6c9, in 8.0.5) by letting DefWindowProc handle it. Apply the same one-line fix
 # to the fetched source at configure time; it checks whether it is already applied and
 # fails loudly if JUCE changes under it.
-function(askp_patch_juce_ime juce_dir)
+function(fueledby_patch_juce_ime juce_dir)
     set(file "${juce_dir}/modules/juce_gui_basics/native/juce_Windowing_windows.cpp")
     file(READ "${file}" src)
-    set(marker "askp patch: IME setcontext recursion")
+    set(marker "fueledby patch: IME setcontext recursion")
     string(FIND "${src}" "${marker}" done)
     if(done EQUAL -1)
         set(anchor "return ImmIsUIMessage (h, message, wParam, lParam);")
