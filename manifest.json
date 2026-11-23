@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "hub": {
-    "version": "0.2.0",
-    "notes": "Theme menu: pick a look for the Hub and every askp plugin.",
+    "version": "0.2.1",
+    "notes": "askp is now fueledby. Install this Hub: it replaces askp Hub and moves your plugins, data and theme across.",
     "download": {
-      "mac": "https://github.com/askp-dev/hub/releases/latest/download/askp-Hub-macOS.dmg",
-      "win": "https://github.com/askp-dev/hub/releases/latest/download/askp-Hub-Windows-Setup.exe"
+      "mac": "https://github.com/askp-dev/hub/releases/latest/download/fueledby-Hub-macOS.dmg",
+      "win": "https://github.com/askp-dev/hub/releases/latest/download/fueledby-Hub-Windows-Setup.exe"
     }
   },
   "plugins": [
@@ -14,231 +14,231 @@
       "name": "V/A",
       "badge": "V/A",
       "tagline": "Analog-style channel strip: up to sixteen slots of Pre, Tape, Comp, Tone, Space, Echo, Drive, Amp, Pitch and more.",
-      "version": "0.6.2",
+      "version": "0.6.3",
       "bundles": {
         "vst3": "VA.vst3",
         "au": "VA.component",
         "clap": "VA.clap"
       },
       "downloads": {
+        "win": {
+          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.6.3/va-0.6.3-win.zip",
+          "sha256": "7dc36fa2e9d06fe80c5ec15ff15fbb8ee48107575263f6b7852ebf230d402308",
+          "size": 4893112,
+          "formats": [
+            "vst3",
+            "clap"
+          ]
+        },
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.6.2/va-0.6.2-mac.zip",
-          "sha256": "28c7900d905d00f8f23f09efd4f5e850cad867ad10ccf7e1997dd5c04bb19d6d",
-          "size": 12755982,
+          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.6.3/va-0.6.3-mac.zip",
+          "sha256": "a4db7e2cf9ed7de627d7634999ba4148573f61dba4c316084f6490f885985f44",
+          "size": 12773658,
           "formats": [
             "vst3",
             "au",
             "clap"
           ]
-        },
-        "win": {
-          "url": "https://github.com/askp-dev/hub/releases/download/va-v0.6.2/va-0.6.2-win.zip",
-          "sha256": "7d08c476a6f37236dd2357a3235605e65a687bc3161eaf775051ed917b1cfbb8",
-          "size": 4886824,
-          "formats": [
-            "vst3",
-            "clap"
-          ]
         }
       },
-      "released": "2026-11-21",
-      "notes": "0.6.0: Shared askp themes: theme menu next to the light/dark button, one choice for all askp plugins. Sibil device shows the standalone's timeline graph and S Balance line. 0.5.1: a Hide graph button folds the graph into a slim bar so the knobs fill the panel (open by default, saved per session). 0.5.0: every control on screen; band EQ is now Tone with Character, Tube and Tilt."
+      "released": "2026-11-23",
+      "notes": "0.6.3: askp is now fueledby. DAWs list it under fueledby; saved sessions, presets and your theme carry over. 0.6.0: Shared fueledby themes: theme menu next to the light/dark button, one choice for all fueledby plugins. Sibil device shows the standalone's timeline graph and S Balance line. 0.5.1: a Hide graph button folds the graph into a slim bar so the knobs fill the panel (open by default, saved per session). 0.5.0: every control on screen; band EQ is now Tone with Character, Tube and Tilt."
     },
     {
       "id": "valab",
       "name": "V/A Lab",
       "badge": "LAB",
       "tagline": "Tester build of V/A with a Tuning panel: adjust every character's numbers by ear and export them.",
-      "version": "0.6.2",
+      "version": "0.6.3",
       "bundles": {
         "vst3": "VA Lab.vst3",
         "au": "VA Lab.component"
       },
       "downloads": {
+        "win": {
+          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.6.3/valab-0.6.3-win.zip",
+          "sha256": "dd9a151115cd6675eb84b158fa544fe9873e6945233f2c60c5e2ea174064ce50",
+          "size": 2619530,
+          "formats": [
+            "vst3"
+          ]
+        },
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.6.2/valab-0.6.2-mac.zip",
-          "sha256": "30d0b8fcdad03f348a814fcc0011272464b23f4df20388ec39b48549ff0af288",
-          "size": 9056390,
+          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.6.3/valab-0.6.3-mac.zip",
+          "sha256": "02fa04479d95d149f057196f1b141a748ca4d59b2667f3a0f7294eda33c88499",
+          "size": 9069684,
           "formats": [
             "vst3",
             "au"
           ]
-        },
-        "win": {
-          "url": "https://github.com/askp-dev/hub/releases/download/valab-v0.6.2/valab-0.6.2-win.zip",
-          "sha256": "ba2bca7387f80aa0239aa15725f2162be4163378bba323f05476aadf923b12a4",
-          "size": 2616485,
-          "formats": [
-            "vst3"
-          ]
         }
       },
-      "released": "2026-11-21",
-      "notes": "0.6.0: Shared askp themes: theme menu next to the light/dark button, one choice for all askp plugins. 0.5.1: built on V/A 0.5.1 (Hide graph button)."
+      "released": "2026-11-23",
+      "notes": "0.6.3: askp is now fueledby. DAWs list it under fueledby; saved sessions, presets and your theme carry over. 0.6.0: Shared fueledby themes: theme menu next to the light/dark button, one choice for all fueledby plugins. 0.5.1: built on V/A 0.5.1 (Hide graph button)."
     },
     {
       "id": "sector",
       "name": "Sector",
       "badge": "SEC",
       "tagline": "Split a mix by stereo position and frequency, and send each part to its own output.",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "bundles": {
         "vst3": "Sector.vst3",
         "au": "Sector.component"
       },
       "downloads": {
+        "win": {
+          "url": "https://github.com/askp-dev/hub/releases/download/sector-v0.2.2/sector-0.2.2-win.zip",
+          "sha256": "4e2af1603f099c32156a9fda9dc9a9aec9d73ec30dfe9b65063cbc708ff4f019",
+          "size": 1997868,
+          "formats": [
+            "vst3"
+          ]
+        },
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/sector-v0.2.1/sector-0.2.1-mac.zip",
-          "sha256": "31e5058358bc25a3ac56ff89c4f5dec7e75c1a06a416a0f72c8ffc5225e5957c",
-          "size": 6715129,
+          "url": "https://github.com/askp-dev/hub/releases/download/sector-v0.2.2/sector-0.2.2-mac.zip",
+          "sha256": "4516dfc0f991c62b09556660a15f8fc1e26ea7714f91fcd251b8846ef81d2f28",
+          "size": 6781729,
           "formats": [
             "vst3",
             "au"
           ]
-        },
-        "win": {
-          "url": "https://github.com/askp-dev/hub/releases/download/sector-v0.2.1/sector-0.2.1-win.zip",
-          "sha256": "132b6dc992a0665eee776b9b9e922e542170a11e2c4d1e010750cda6aa7e5dd7",
-          "size": 1995925,
-          "formats": [
-            "vst3"
-          ]
         }
       },
-      "released": "2026-11-21",
-      "notes": "0.2.0: Shared askp themes: theme menu next to the light/dark button, one choice for all askp plugins. 0.1.1: host bypass now stays in time with the plugin's latency (Bypass and Deactivate sound the same)."
+      "released": "2026-11-23",
+      "notes": "0.2.2: askp is now fueledby. DAWs list it under fueledby; saved sessions, presets and your theme carry over. 0.2.0: Shared fueledby themes: theme menu next to the light/dark button, one choice for all fueledby plugins. 0.1.1: host bypass now stays in time with the plugin's latency (Bypass and Deactivate sound the same)."
     },
     {
       "id": "sibil",
       "name": "Sibil",
       "badge": "SIB",
       "tagline": "A de-esser that hears the difference between S, SH and T, and links across a vocal stack.",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "bundles": {
         "vst3": "Sibil.vst3",
         "au": "Sibil.component",
         "clap": "Sibil.clap"
       },
       "downloads": {
+        "win": {
+          "url": "https://github.com/askp-dev/hub/releases/download/sibil-v0.2.2/sibil-0.2.2-win.zip",
+          "sha256": "0dac90908032e1d66a95716eb95f3ae8da0aaadc19443dc0f707c67cb20cd016",
+          "size": 3872843,
+          "formats": [
+            "vst3",
+            "clap"
+          ]
+        },
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/sibil-v0.2.1/sibil-0.2.1-mac.zip",
-          "sha256": "7161cc696328a32cb03f8a9e34c20bcc50561f25a2d5c96faef75aec6874d078",
-          "size": 9800344,
+          "url": "https://github.com/askp-dev/hub/releases/download/sibil-v0.2.2/sibil-0.2.2-mac.zip",
+          "sha256": "8aade7c6d7f6f85b4fcca329e2f0da03388379c519d062ca834e362a379d027e",
+          "size": 9901515,
           "formats": [
             "vst3",
             "au",
             "clap"
           ]
-        },
-        "win": {
-          "url": "https://github.com/askp-dev/hub/releases/download/sibil-v0.2.1/sibil-0.2.1-win.zip",
-          "sha256": "dc205360e5fed6dd701e218fffc14c4b40527756c280372a11a3c1e4d590e1fd",
-          "size": 3865815,
-          "formats": [
-            "vst3",
-            "clap"
-          ]
         }
       },
-      "released": "2026-11-21",
-      "notes": "0.2.0: Shared askp themes: theme menu next to the light/dark button, one choice for all askp plugins. Host parameter text round-trips correctly. 0.1.1: Host parameter text now recalls the displayed breath and plosive attenuation correctly."
+      "released": "2026-11-23",
+      "notes": "0.2.2: askp is now fueledby. DAWs list it under fueledby; saved sessions, presets and your theme carry over. 0.2.0: Shared fueledby themes: theme menu next to the light/dark button, one choice for all fueledby plugins. Host parameter text round-trips correctly. 0.1.1: Host parameter text now recalls the displayed breath and plosive attenuation correctly."
     },
     {
       "id": "taste",
       "name": "Taste",
       "badge": "TST",
       "tagline": "Build a taste profile from your own mixes and pull new mixes towards it.",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "bundles": {
         "vst3": "Taste.vst3",
         "au": "Taste.component",
         "clap": "Taste.clap"
       },
       "downloads": {
+        "win": {
+          "url": "https://github.com/askp-dev/hub/releases/download/taste-v0.2.2/taste-0.2.2-win.zip",
+          "sha256": "49ee3a6424ce7c3b5dde3eeb3c380a99623ac122d1b8228055b36b466ee3b759",
+          "size": 5272845,
+          "formats": [
+            "vst3",
+            "clap"
+          ]
+        },
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/taste-v0.2.1/taste-0.2.1-mac.zip",
-          "sha256": "8a7f4b3e09251a938cbdf010a8f6c1d746ac1f3dd236d8d1d4fde27140ccce30",
-          "size": 13903932,
+          "url": "https://github.com/askp-dev/hub/releases/download/taste-v0.2.2/taste-0.2.2-mac.zip",
+          "sha256": "481e43fede6c9f2d6db6d1fcaeba66544f34bf50239e6bede66ed36585b87f0b",
+          "size": 14049782,
           "formats": [
             "vst3",
             "au",
             "clap"
           ]
-        },
-        "win": {
-          "url": "https://github.com/askp-dev/hub/releases/download/taste-v0.2.1/taste-0.2.1-win.zip",
-          "sha256": "77b77ab6fd8a5381b0f8963fcecc4e69084c2ad88ba450f677ad5b6f9c830779",
-          "size": 5264132,
-          "formats": [
-            "vst3",
-            "clap"
-          ]
         }
       },
-      "released": "2026-11-21",
-      "notes": "0.2.0: Shared askp themes: theme menu next to the light/dark button, one choice for all askp plugins. Host parameter text round-trips correctly. 0.1.1: Host parameter text now recalls the displayed Exaggerate multiplier."
+      "released": "2026-11-23",
+      "notes": "0.2.2: askp is now fueledby. DAWs list it under fueledby; saved sessions, presets and your theme carry over. 0.2.0: Shared fueledby themes: theme menu next to the light/dark button, one choice for all fueledby plugins. Host parameter text round-trips correctly. 0.1.1: Host parameter text now recalls the displayed Exaggerate multiplier."
     },
     {
       "id": "grille",
       "name": "Grille",
       "badge": "GRL",
       "tagline": "Guitar and bass amp, cab and mic IRs on three morphing pads.",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "bundles": {
         "vst3": "Grille.vst3",
         "au": "Grille.component",
         "clap": "Grille.clap"
       },
       "downloads": {
+        "win": {
+          "url": "https://github.com/askp-dev/hub/releases/download/grille-v0.2.2/grille-0.2.2-win.zip",
+          "sha256": "5c9c62e6b9aa3a1d7b4e1a3fd305363e39ff07ef22e88bc14e6ab5e0ece9c309",
+          "size": 5488591,
+          "formats": [
+            "vst3",
+            "clap"
+          ]
+        },
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/grille-v0.2.1/grille-0.2.1-mac.zip",
-          "sha256": "50c720abad20e8428e6c03babe5a02756af24bd7751bb3397896ea888834441a",
-          "size": 14492158,
+          "url": "https://github.com/askp-dev/hub/releases/download/grille-v0.2.2/grille-0.2.2-mac.zip",
+          "sha256": "b927287c694fc9768b4ebf6c80e4c5ebb4fbe47abf6db8be34bbcc90406974ed",
+          "size": 14637689,
           "formats": [
             "vst3",
             "au",
             "clap"
           ]
-        },
-        "win": {
-          "url": "https://github.com/askp-dev/hub/releases/download/grille-v0.2.1/grille-0.2.1-win.zip",
-          "sha256": "e647c30fb50bbc2976c5dee2c081981959ba5fb80df569d4cded57427b9f9a85",
-          "size": 5482678,
-          "formats": [
-            "vst3",
-            "clap"
-          ]
         }
       },
-      "notes": "0.2.0: Shared askp themes: theme menu next to the light/dark button, one choice for all askp plugins. Host parameter text round-trips correctly. First test build. Bundled cab IRs: Brit 4x12 and Rect 4x12 from Jester Dyne Productions (CC0); Thick 2x12: IR: Darwin's Cat, darwinscat.com (CC BY 4.0). Full credits and licences are in the download zip.",
-      "released": "2026-11-21"
+      "notes": "0.2.2: askp is now fueledby. DAWs list it under fueledby; saved sessions, presets and your theme carry over. 0.2.0: Shared fueledby themes: theme menu next to the light/dark button, one choice for all fueledby plugins. Host parameter text round-trips correctly. First test build. Bundled cab IRs: Brit 4x12 and Rect 4x12 from Jester Dyne Productions (CC0); Thick 2x12: IR: Darwin's Cat, darwinscat.com (CC BY 4.0). Full credits and licences are in the download zip.",
+      "released": "2026-11-23"
     },
     {
       "id": "atrium",
       "name": "Atrium",
       "badge": "ATR",
       "tagline": "Draw a room, place every track in it, and walk a listener through it, in stereo or binaural 3D.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "bundles": {
         "vst3": "Atrium.vst3",
         "au": "Atrium.component",
         "clap": "Atrium.clap"
       },
-      "notes": "0.2.0: One kind of plugin: put Atrium on each track (no Room bus). Every track shares one room, listener and output mode; edit them on any track. Headphones mode is binaural 3D (front/back, above/below). Draw any room shape with curved walls, add furniture, pillars, doors; walls and tall objects block sound. Save your own rooms, record a listener walk against the song, export impulse responses, Air control. 0.1 sessions still load (an old Room bus plays its tail and can be turned into a track).",
+      "notes": "0.2.1: askp is now fueledby. DAWs list it under fueledby; saved sessions, presets and your theme carry over. 0.2.0: One kind of plugin: put Atrium on each track (no Room bus). Every track shares one room, listener and output mode; edit them on any track. Headphones mode is binaural 3D (front/back, above/below). Draw any room shape with curved walls, add furniture, pillars, doors; walls and tall objects block sound. Save your own rooms, record a listener walk against the song, export impulse responses, Air control. 0.1 sessions still load (an old Room bus plays its tail and can be turned into a track).",
       "downloads": {
         "win": {
-          "url": "https://github.com/askp-dev/hub/releases/download/atrium-v0.2.0/atrium-0.2.0-win.zip",
-          "sha256": "001054e9f5d8dc25bbb45873106f3dc29631447bf8a17d708e3a0c06a5fe7cf2",
-          "size": 4746888,
+          "url": "https://github.com/askp-dev/hub/releases/download/atrium-v0.2.1/atrium-0.2.1-win.zip",
+          "sha256": "94c32318898deae620bedf8d37ff44854a3de078b0994037993d788e7f3daf6a",
+          "size": 4754163,
           "formats": [
             "vst3",
             "clap"
           ]
         },
         "mac": {
-          "url": "https://github.com/askp-dev/hub/releases/download/atrium-v0.2.0/atrium-0.2.0-mac.zip",
-          "sha256": "9e1065854a35764f1f7e553066e092b599c01c67e9bd464881779fa467120f0c",
-          "size": 13170944,
+          "url": "https://github.com/askp-dev/hub/releases/download/atrium-v0.2.1/atrium-0.2.1-mac.zip",
+          "sha256": "cf763e3710ab0686737fe92168c67aed517292ca3c4cdcaf1fac5079b72b7071",
+          "size": 13187552,
           "formats": [
             "vst3",
             "au",
@@ -246,7 +246,7 @@
           ]
         }
       },
-      "released": "2026-11-22"
+      "released": "2026-11-23"
     }
   ]
 }
