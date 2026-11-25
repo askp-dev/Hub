@@ -4,13 +4,13 @@ name = "fueledby-submissions"
 main = "src/worker.ts"
 compatibility_date = "2025-10-01"
 
-# Served at submit.fueledby.cc (the Hub's default HUB_SUBMIT_URL). Uncomment on the first deploy.
-# routes = [{ pattern = "submit.fueledby.cc", custom_domain = true }]
+# Served at submit.fueledby.cc (the Hub's default HUB_SUBMIT_URL). Live since 2026-11-25.
+routes = [{ pattern = "submit.fueledby.cc", custom_domain = true }]
 
 [vars]
 # "off" makes the Hub say submissions are closed (GET /v1/info) and refuses new ones.
 SUBMISSIONS_OPEN = "on"
-TERMS_URL = "https://fueledby.cc/terms"
+TERMS_URL = "https://fueledby.cc/creator-terms"   # page drafted 2026-11-25 in site-src; live worker still says /terms until the site deploys it
 # Bump when the community creator terms change: the Hub sends the version the creator agreed to.
 TERMS_VERSION = "2026-11-25"
 PART_SIZE_MB = "8"
@@ -25,7 +25,7 @@ RATE_GLOBAL_PER_DAY = "100"
 [[d1_databases]]
 binding = "DB"
 database_name = "fueledby-submissions"
-database_id = "REPLACE_after_wrangler_d1_create"
+database_id = "31c1c5b2-f9eb-496d-8d08-23864c6eb5cf"
 migrations_dir = "migrations"
 
 [[r2_buckets]]

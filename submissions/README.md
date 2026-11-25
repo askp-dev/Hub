@@ -70,6 +70,6 @@ npx wrangler r2 bucket create fueledby-submissions
 npm run db:migrate:remote
 npx wrangler secret put ADMIN_TOKEN
 npx wrangler secret put IP_SALT
-# uncomment the submit.fueledby.cc route in wrangler.toml
+# (submit.fueledby.cc route is already in wrangler.toml)
 npx wrangler deploy
 ```
