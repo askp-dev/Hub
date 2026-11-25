@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "hub": {
-    "version": "0.2.1",
-    "notes": "askp is now fueledby. Install this Hub: it replaces askp Hub and moves your plugins, data and theme across.",
+    "version": "0.2.2",
+    "notes": "New: Submit a plugin. Community creators can send a plugin for review straight from the Hub.",
     "download": {
       "mac": "https://github.com/askp-dev/hub/releases/latest/download/fueledby-Hub-macOS.dmg",
       "win": "https://github.com/askp-dev/hub/releases/latest/download/fueledby-Hub-Windows-Setup.exe"
