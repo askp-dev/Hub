@@ -1,0 +1,36 @@
+# fueledby plugin submissions. The Hub's "Submit a plugin" page talks to this Worker.
+# Nothing here publishes anything: submissions wait in a review queue (scripts/review.mjs).
+name = "fueledby-submissions"
+main = "src/worker.ts"
+compatibility_date = "2025-10-01"
+
+# Served at submit.fueledby.cc (the Hub's default HUB_SUBMIT_URL). Uncomment on the first deploy.
+# routes = [{ pattern = "submit.fueledby.cc", custom_domain = true }]
+
+[vars]
+# "off" makes the Hub say submissions are closed (GET /v1/info) and refuses new ones.
+SUBMISSIONS_OPEN = "on"
+TERMS_URL = "https://fueledby.cc/terms"
+# Bump when the community creator terms change: the Hub sends the version the creator agreed to.
+TERMS_VERSION = "2026-11-25"
+PART_SIZE_MB = "8"
+MAX_BUILD_MB = "300"
+MAX_SCREENSHOT_MB = "8"
+MAX_TOTAL_MB = "700"
+RATE_PER_IP_PER_DAY = "5"
+RATE_GLOBAL_PER_DAY = "100"
+# Secrets (wrangler secret put ...): ADMIN_TOKEN (review API), IP_SALT (hashes IPs for rate limits),
+# optional DISCORD_WEBHOOK_URL (a message per new submission).
+
+[[d1_databases]]
+binding = "DB"
+database_name = "fueledby-submissions"
+database_id = "REPLACE_after_wrangler_d1_create"
+migrations_dir = "migrations"
+
+[[r2_buckets]]
+binding = "FILES"
+bucket_name = "fueledby-submissions"
+
+[triggers]
+crons = ["17 * * * *"]  # hourly: drop unfinished uploads after 24 h, binaries of rejected/withdrawn after 30 days

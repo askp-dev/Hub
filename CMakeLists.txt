@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(Hub VERSION 0.2.1 LANGUAGES C CXX)
+project(Hub VERSION 0.2.2 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -8,6 +8,8 @@ set(CMAKE_OSX_DEPLOYMENT_TARGET "11.0" CACHE STRING "")
 # Where the app reads the plugin list. A plain file in this (public) repo, so
 # publishing a release is a commit to manifest.json.
 set(HUB_MANIFEST_URL "https://raw.githubusercontent.com/askp-dev/hub/main/manifest.json" CACHE STRING "Plugin list URL")
+# The plugin submissions service (submissions/ in this repo, a Cloudflare Worker).
+set(HUB_SUBMIT_URL "https://submit.fueledby.cc" CACHE STRING "Plugin submissions service URL")
 
 # Same JUCE as V/A. To save disk and download time, point at an existing copy:
 #   cmake -B build -DFETCHCONTENT_SOURCE_DIR_JUCE="../V-A/build/_deps/juce-src"
@@ -23,12 +25,13 @@ fueledby_patch_juce_ime("${juce_SOURCE_DIR}")
 set(HUB_DEFS
     HUB_VERSION="${PROJECT_VERSION}"
     HUB_MANIFEST_URL="${HUB_MANIFEST_URL}"
+    HUB_SUBMIT_URL="${HUB_SUBMIT_URL}"
     JUCE_WEB_BROWSER=0
     JUCE_DISPLAY_SPLASH_SCREEN=0
     JUCE_USE_CURL=$<IF:$<PLATFORM_ID:Linux>,1,0>)
 
 # --- installer core (no UI) ---
-add_library(hub_core STATIC Source/core/Installer.cpp)
+add_library(hub_core STATIC Source/core/Installer.cpp Source/core/Submission.cpp)
 target_include_directories(hub_core PUBLIC Source)
 target_compile_definitions(hub_core PUBLIC ${HUB_DEFS})
 target_link_libraries(hub_core PUBLIC juce::juce_core juce::juce_cryptography juce::juce_events
@@ -44,7 +47,7 @@ juce_add_gui_app(Hub
     ICON_BIG "${CMAKE_CURRENT_SOURCE_DIR}/packaging/icon.png"
     NEEDS_CURL TRUE
     NEEDS_WEB_BROWSER FALSE)
-target_sources(Hub PRIVATE Source/app/Main.cpp Source/app/HubComponent.cpp Source/app/look/FueledbyFonts.cpp)
+target_sources(Hub PRIVATE Source/app/Main.cpp Source/app/HubComponent.cpp Source/app/SubmitPage.cpp Source/app/look/FueledbyFonts.cpp)
 target_compile_definitions(Hub PRIVATE JUCE_MODAL_LOOPS_PERMITTED=1)   # headless --install check
 target_link_libraries(Hub PRIVATE hub_core juce::juce_gui_basics
                       PUBLIC juce::juce_recommended_config_flags juce::juce_recommended_warning_flags)
