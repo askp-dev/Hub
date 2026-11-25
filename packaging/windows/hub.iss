@@ -6,7 +6,7 @@
 #ifndef AppExe
   #define AppExe "..\..\build\Hub_artefacts\Release\fueledby Hub.exe"
 #endif
-#define AppVersion "0.2.1"
+#define AppVersion "0.2.2"
 
 [Setup]
 AppId={{8300EC93-7637-4FDC-AABD-A6D2AE06A8D1}
