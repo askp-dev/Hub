@@ -2,6 +2,7 @@
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "StudioLook.h"
 #include "../core/Installer.h"
+#include "SubmitPage.h"
 
 namespace hub {
 
@@ -55,7 +56,8 @@ class HubComponent final : public juce::Component {
 public:
     // manifestSource: an https URL or a local file path. syncLoad: read it before
     // returning (snapshots and tests), otherwise in the background.
-    HubComponent(juce::String manifestSource, bool syncLoad = false);
+    // submitUrl: the plugin submissions service (empty: HUB_SUBMIT_URL / FUELEDBY_HUB_SUBMIT_URL).
+    HubComponent(juce::String manifestSource, bool syncLoad = false, juce::String submitUrl = {});
     ~HubComponent() override;
 
     void paint(juce::Graphics&) override;
@@ -66,11 +68,13 @@ public:
     void cardsChanged();   // a card finished a job or changed status
     PluginCard* card(const juce::String& id);
     void refresh();
+    void showSubmit(bool show);              // the "Submit a plugin" page in place of the list
+    SubmitPage* getSubmitPage() { return submitPage.get(); }
 
 private:
     ui::StudioLook look;
     Installer installer;
-    juce::String source;
+    juce::String source, submitUrl;
     std::optional<Manifest> manifest;
     juce::String banner;   // offline / error / Hub update note
     bool bannerIsHubUpdate = false, loading = false;
@@ -78,7 +82,9 @@ private:
     ui::ThemeButton theme;
     ui::ThemeMenuButton themeMenu;
     ui::ThemeFollower themeFollow { *this, look, [this] { for (auto* c : cards) c->refreshStatus(); } };
-    juce::TextButton refreshButton { "Refresh" }, updateAll { "Update all" }, openFolder { "Show folder" };
+    juce::TextButton refreshButton { "Refresh" }, updateAll { "Update all" }, openFolder { "Show folder" },
+                     submitButton { "Submit a plugin" };
+    std::unique_ptr<SubmitPage> submitPage;
     juce::Viewport viewport;
     juce::Component list;
     juce::OwnedArray<PluginCard> cards;

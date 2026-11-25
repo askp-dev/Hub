@@ -50,6 +50,11 @@ To publish the Hub itself, upload `fueledby-Hub-macOS.dmg` / `fueledby-Hub-Windo
 `hub-v<version>` release and bump `hub.version` in `manifest.json`; older Hubs then show a
 download banner.
 
+## Plugin submissions
+
+Community creators can send a plugin from the Hub (**Submit a plugin**). Submissions go to a review queue,
+never straight into `manifest.json`. Service, API and review steps: [submissions/README.md](submissions/README.md).
+
 ## Testing without touching your plug-in folders
 
 ```bash

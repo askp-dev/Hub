@@ -138,3 +138,20 @@ Run anyway**.
 * Beta channel: a second manifest (`manifest-beta.json`) testers switch to in settings.
 * Licences and sign-in, if any plugin becomes paid.
 * All-users install on Mac via a privileged helper.
+
+## Submitting a plugin (community creators)
+
+**Submit a plugin** in the Hub's header opens a form in place of the list. A creator fills in the
+plugin's details, their name and email, a public source code link and license, how they'd like to offer
+it (free, Store, subscription, not sure), and picks a Mac and/or Windows build: bundles, a JUCE
+`_artefacts/Release` folder, or a zip already in the VST3/ AU/ CLAP/ layout (drag and drop works too).
+The Hub checks each bundle is built for that platform, zips it in the layout the Hub installs from,
+hashes every file and uploads it in parts to the submissions service (`submissions/`, a Cloudflare
+Worker with D1 + R2, `HUB_SUBMIT_URL`, default `https://submit.fueledby.cc`).
+
+Nothing is published automatically: submissions wait in a review queue (`submissions/scripts/review.mjs`).
+The Hub remembers what it sent (`submissions.json` in its data folder) and shows each one's status and
+the reviewer's note at the top of the page. If the service can't be reached or is closed, the page says
+so and the Submit button stays off.
+
+![Submit a plugin](submit-light.png)

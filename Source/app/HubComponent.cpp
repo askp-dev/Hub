@@ -232,8 +232,10 @@ void PluginCard::resized() {
 
 // =================================================================== hub
 
-HubComponent::HubComponent(juce::String manifestSource, bool syncLoad)
-    : installer(Paths::defaults()), source(std::move(manifestSource)) {
+HubComponent::HubComponent(juce::String manifestSource, bool syncLoad, juce::String submitService)
+    : installer(Paths::defaults()), source(std::move(manifestSource)), submitUrl(std::move(submitService)) {
+    if (submitUrl.isEmpty()) submitUrl = Paths::env("HUB_SUBMIT_URL");
+    if (submitUrl.isEmpty()) submitUrl = HUB_SUBMIT_URL;
     installer.migrateLegacy();   // pre-rebrand askp folders -> fueledby
     setLookAndFeel(&look);
     theme.onClick = [this] { saveThemePreference(! darkTheme()); themeFollow.check(); };
@@ -245,7 +247,9 @@ HubComponent::HubComponent(juce::String manifestSource, bool syncLoad)
         dir.createDirectory();
         dir.revealToUser();
     };
-    for (juce::Component* c : { (juce::Component*) &theme, (juce::Component*) &themeMenu, (juce::Component*) &refreshButton, (juce::Component*) &updateAll, (juce::Component*) &openFolder })
+    submitButton.onClick = [this] { showSubmit(submitPage == nullptr || ! submitPage->isVisible()); };
+    for (juce::Component* c : { (juce::Component*) &theme, (juce::Component*) &themeMenu, (juce::Component*) &refreshButton, (juce::Component*) &updateAll,
+                                (juce::Component*) &openFolder, (juce::Component*) &submitButton })
         addAndMakeVisible(c);
     viewport.setViewedComponent(&list, false);
     viewport.setScrollBarsShown(true, false);
@@ -287,6 +291,21 @@ juce::String HubComponent::fetch(const juce::String& src, juce::String& error) {
         return {};
     }
     return in->readEntireStreamAsString();
+}
+
+void HubComponent::showSubmit(bool show) {
+    if (show && submitPage == nullptr) {
+        submitPage = std::make_unique<SubmitPage>(installer.getPaths(), submitUrl);
+        submitPage->onBack = [this] { showSubmit(false); };
+        addChildComponent(*submitPage);
+    }
+    if (submitPage != nullptr) {
+        submitPage->setVisible(show);
+        if (show) submitPage->opened();
+    }
+    viewport.setVisible(! show);
+    submitButton.setButtonText(show ? "Back to plugins" : "Submit a plugin");
+    cardsChanged();
 }
 
 void HubComponent::refresh() {
@@ -350,7 +369,9 @@ PluginCard* HubComponent::card(const juce::String& id) {
 void HubComponent::cardsChanged() {
     int updates = 0;
     for (auto* c : cards) if (c->hasUpdate() && ! c->isBusy()) ++updates;
-    updateAll.setVisible(updates > 1);
+    const bool submitting = submitPage != nullptr && submitPage->isVisible();
+    updateAll.setVisible(updates > 1 && ! submitting);
+    refreshButton.setVisible(! submitting);
     updateAll.setButtonText("Update all (" + juce::String(updates) + ")");
     setPrimary(updateAll, true);
     resized();
@@ -385,7 +406,9 @@ void HubComponent::paint(juce::Graphics& g) {
     g.drawText("fueledby Hub", header.removeFromTop(22.0f), juce::Justification::bottomLeft);
     g.setColour(colours::muted);
     g.setFont(labelFont(9.5f));
-    juce::String sub = loading ? "Checking for updates" : (manifest ? juce::String(manifest->plugins.size()) + " plugins" : juce::String("No plugin list yet"));
+    const bool submitting = submitPage != nullptr && submitPage->isVisible();
+    juce::String sub = submitting ? "Community creators" : loading ? "Checking for updates"
+                     : (manifest ? juce::String(manifest->plugins.size()) + " plugins" : juce::String("No plugin list yet"));
     g.drawText(sub.toUpperCase(), header, juce::Justification::centredLeft);
 
     if (auto b = bannerArea(); ! b.isEmpty()) {
@@ -397,7 +420,7 @@ void HubComponent::paint(juce::Graphics& g) {
         g.drawText(banner, b.reduced(14, 0), juce::Justification::centredLeft, true);
     }
 
-    if (cards.isEmpty()) {
+    if (cards.isEmpty() && ! submitting) {
         g.setColour(colours::muted);
         g.setFont(bodyFont(13.0f));
         g.drawText(loading ? "Loading the plugin list..." : "No plugins to show. Check your connection and press Refresh.",
@@ -428,13 +451,15 @@ void HubComponent::resized() {
     header.removeFromRight(6);
     themeMenu.setBounds(header.removeFromRight(44));
     header.removeFromRight(8);
-    refreshButton.setBounds(header.removeFromRight(90));
+    if (refreshButton.isVisible()) { refreshButton.setBounds(header.removeFromRight(90)); header.removeFromRight(8); }
+    submitButton.setBounds(header.removeFromRight(132));
     header.removeFromRight(8);
     if (updateAll.isVisible()) updateAll.setBounds(header.removeFromRight(130));
     if (banner.isNotEmpty()) r.removeFromTop(bannerHeight + 8);
     auto footer = r.removeFromBottom(footerHeight);
     openFolder.setBounds(footer.reduced(24, 7).removeFromLeft(96));
     viewport.setBounds(r.withTrimmedLeft(18).withTrimmedRight(10).withTrimmedBottom(6));
+    if (submitPage != nullptr) submitPage->setBounds(r.withTrimmedBottom(6));
 
     const int w = viewport.getWidth() - viewport.getScrollBarThickness() - 4;
     list.setSize(w, juce::jmax(1, cards.size() * (cardHeight + gap) - gap + 8));   // no scrollbar when it all fits
